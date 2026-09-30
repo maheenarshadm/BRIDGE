@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/"
+             id="Volume_and_Tiered_Pricing" name="Volume_and_Tiered_Pricing" namespace="https://spree-dmn.research/case-study">
+    <decision id="Decision_PromotionTieredPercentSelection" name="Promotion Tiered Percent Discount Selection">
+      <decisionTable id="dt_Decision_PromotionTieredPercentSelection" hitPolicy="FIRST">
+        <input id="in_Decision_PromotionTieredPercentSelection_0" label="Amount the calculator computes against">
+          <inputExpression id="ie_Decision_PromotionTieredPercentSelection_0" typeRef="number"><text>orderAmount</text></inputExpression>
+        </input>
+        <output id="out_Decision_PromotionTieredPercentSelection_0" label="Percent applied by TieredPercent calculator" name="discountPercent" typeRef="number"/>
+        <rule id="Decision_PromotionTieredPercentSelection_rule_1">
+          <inputEntry><text>&gt;= 500</text></inputEntry>
+          <outputEntry><text>20</text></outputEntry>
+          <annotationEntry><text>illustrative tier instance — preferred_tiers is a merchant-configured runtime hash, not a fixed set of breaks in the source</text></annotationEntry>
+        </rule>
+        <rule id="Decision_PromotionTieredPercentSelection_rule_2">
+          <inputEntry><text>&gt;= 200</text></inputEntry>
+          <outputEntry><text>10</text></outputEntry>
+          <annotationEntry><text>illustrative tier instance</text></annotationEntry>
+        </rule>
+        <rule id="Decision_PromotionTieredPercentSelection_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>basePercent</text></outputEntry>
+          <annotationEntry><text>falls through to preferred_base_percent when no configured tier threshold is met</text></annotationEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_PriceListAdjustmentTierSelection" name="Price List Volume Adjustment Tier Selection">
+      <decisionTable id="dt_Decision_PriceListAdjustmentTierSelection" hitPolicy="FIRST">
+        <input id="in_Decision_PriceListAdjustmentTierSelection_0" label="Quantity being priced">
+          <inputExpression id="ie_Decision_PriceListAdjustmentTierSelection_0" typeRef="number"><text>purchaseQuantity</text></inputExpression>
+        </input>
+        <output id="out_Decision_PriceListAdjustmentTierSelection_0" label="Percentage adjustment applied to base price" name="adjustmentPercentage" typeRef="number"/>
+        <rule id="Decision_PriceListAdjustmentTierSelection_rule_1">
+          <inputEntry><text>&gt;= 100</text></inputEntry>
+          <outputEntry><text>-20</text></outputEntry>
+          <annotationEntry><text>illustrative band instance (&gt;1 required, &lt;1000, !=0 per PriceAdjustmentTier validations); mirrors the qty&gt;100 example this case study was chosen to cover</text></annotationEntry>
+        </rule>
+        <rule id="Decision_PriceListAdjustmentTierSelection_rule_2">
+          <inputEntry><text>&gt;= 50</text></inputEntry>
+          <outputEntry><text>-10</text></outputEntry>
+          <annotationEntry><text>illustrative band instance</text></annotationEntry>
+        </rule>
+        <rule id="Decision_PriceListAdjustmentTierSelection_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>priceListBasePercentage</text></outputEntry>
+          <annotationEntry><text>falls through to the price_adjustment_percentage column when no band matches</text></annotationEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_PriceAdjustmentTierValidity" name="Price Adjustment Tier Validity Violations">
+      <decisionTable id="dt_Decision_PriceAdjustmentTierValidity" hitPolicy="COLLECT">
+        <input id="in_Decision_PriceAdjustmentTierValidity_0" label="Tier min_quantity">
+          <inputExpression id="ie_Decision_PriceAdjustmentTierValidity_0" typeRef="number"><text>minQuantity</text></inputExpression>
+        </input>
+        <input id="in_Decision_PriceAdjustmentTierValidity_1" label="Tier percentage">
+          <inputExpression id="ie_Decision_PriceAdjustmentTierValidity_1" typeRef="number"><text>percentage</text></inputExpression>
+        </input>
+        <input id="in_Decision_PriceAdjustmentTierValidity_2" label="Other tiers already on this list">
+          <inputExpression id="ie_Decision_PriceAdjustmentTierValidity_2" typeRef="number"><text>siblingTierCount</text></inputExpression>
+        </input>
+        <output id="out_Decision_PriceAdjustmentTierValidity_0" label="Validation failure reason" name="invalidReason" typeRef="string"/>
+        <rule id="Decision_PriceAdjustmentTierValidity_rule_1">
+          <inputEntry><text>&lt;= 1</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"min_quantity must be greater than 1"</text></outputEntry>
+        </rule>
+        <rule id="Decision_PriceAdjustmentTierValidity_rule_2">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>&lt;= -100</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"percentage must be greater than -100"</text></outputEntry>
+        </rule>
+        <rule id="Decision_PriceAdjustmentTierValidity_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>&gt;= 1000</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"percentage must be less than 1000"</text></outputEntry>
+        </rule>
+        <rule id="Decision_PriceAdjustmentTierValidity_rule_4">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>0</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"percentage cannot be exactly zero"</text></outputEntry>
+        </rule>
+        <rule id="Decision_PriceAdjustmentTierValidity_rule_5">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>&gt;= 10</text></inputEntry>
+          <outputEntry><text>"too many tiers on this price list (cap is MAXIMUM_BREAKS_PER_VARIANT = 10)"</text></outputEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_PriceAdjustmentTierValid" name="Price Adjustment Tier Validity">
+      <informationRequirement id="ir_Decision_PriceAdjustmentTierValid_Decision_PriceAdjustmentTierValidity"><requiredDecision href="#Decision_PriceAdjustmentTierValidity"/></informationRequirement>
+      <literalExpression id="le_Decision_PriceAdjustmentTierValid" typeRef="boolean">
+        <text>count(invalidReasons) = 0</text>
+      </literalExpression>
+    </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_PromotionTieredPercentSelection"><dc:Bounds x="100" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PriceListAdjustmentTierSelection"><dc:Bounds x="320" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PriceAdjustmentTierValidity"><dc:Bounds x="540" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PriceAdjustmentTierValid"><dc:Bounds x="760" y="100" width="180" height="80"/></dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

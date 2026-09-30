@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{Minimal Test Suite Size and Verified Coverage per Output of BRIDGE (Mean of 30 Runs) - RQ3}
+\label{tab:rq3}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|c|ccc|ccc|}
+\hline
+\multirow{2}{*}{\textbf{Case study}} & \multirow{2}{*}{\textbf{Budget}} & \multicolumn{3}{c|}{\textbf{Suite size (databases)}} & \multicolumn{3}{c|}{\textbf{Verified coverage (\%)}} \\
+\cline{3-8}
+ & & \textbf{A} & \textbf{F} & \textbf{U} & \textbf{A} & \textbf{F} & \textbf{U} \\
+\hline
+\multirow{3}{*}{C02 jBilling} & $1B$ & 2.50 & \textbf{1.00} & 1.67 & 89.33 & 86.67 & \textbf{90.00} \\
+ & $5B$ & 2.23 & \textbf{1.00} & 2.00 & 89.67 & 85.00 & \textbf{90.00} \\
+ & $10B$ & 2.23 & \textbf{1.00} & 2.00 & 89.67 & 85.00 & \textbf{90.00} \\
+\hline
+\multirow{3}{*}{C03 OpenMRS} & $1B$ & 14.50 & 7.90 & \textbf{7.67} & 96.30 & \textbf{96.36} & \textbf{96.36} \\
+ & $5B$ & 14.77 & 3.83 & \textbf{3.80} & \textbf{96.36} & \textbf{96.36} & \textbf{96.36} \\
+ & $10B$ & 14.50 & \textbf{2.63} & \textbf{2.63} & \textbf{96.36} & \textbf{96.36} & \textbf{96.36} \\
+\hline
+\multirow{3}{*}{C04 Spree} & $1B$ & 5.00 & \textbf{1.07} & 1.33 & 98.10 & 97.78 & \textbf{99.05} \\
+ & $5B$ & 5.43 & \textbf{1.03} & 1.50 & 98.25 & 96.35 & \textbf{98.89} \\
+ & $10B$ & 5.13 & \textbf{1.00} & 1.33 & 97.94 & 96.98 & \textbf{98.57} \\
+\hline
+\end{tabular}}
+\\[2pt]
+\footnotesize{A: archive. F: final population. U: union of both. Suite size: the smallest set of the output's databases that verifies all rules the output verifies. Smallest suite and highest coverage per row in bold.}
+\end{table}

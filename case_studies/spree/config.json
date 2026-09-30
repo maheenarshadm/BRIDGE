@@ -1,0 +1,41 @@
+{
+  "name": "Spree",
+  "grounding": {
+    "decision_col": "decision",
+    "variable_col": "variable",
+    "schema_col": "schema_location",
+    "notes_col": "note",
+    "key_cols": [
+      "decision_name",
+      "variable_name"
+    ]
+  },
+  "not_persisted": [
+    "not_persisted.json"
+  ],
+  "known_constants": {},
+  "evaluated_objectives": [
+    "Spree::Promotion Customer Group Eligibility::Decision_PromotionCustomerGroupEligibility_rule_1",
+    "Spree::Promotion Customer Group Eligibility::Decision_PromotionCustomerGroupEligibility_rule_2",
+    "Spree::Promotion Customer Group Eligibility::Decision_PromotionCustomerGroupEligibility_rule_4",
+    "Spree::First-Order Promotion Eligibility::Decision_FirstOrderPromotionEligibility_rule_1",
+    "Spree::First-Order Promotion Eligibility::Decision_FirstOrderPromotionEligibility_rule_2",
+    "Spree::First-Order Promotion Eligibility::Decision_FirstOrderPromotionEligibility_rule_3",
+    "Spree::One-Use-Per-User Promotion Eligibility::Decision_OneUsePerUserEligibility_rule_1",
+    "Spree::One-Use-Per-User Promotion Eligibility::Decision_OneUsePerUserEligibility_rule_2",
+    "Spree::One-Use-Per-User Promotion Eligibility::Decision_OneUsePerUserEligibility_rule_3",
+    "Spree::Promotion Temporal Availability::Decision_PromotionTemporalAvailability_rule_1",
+    "Spree::Promotion Temporal Availability::Decision_PromotionTemporalAvailability_rule_2",
+    "Spree::Promotion Temporal Availability::Decision_PromotionTemporalAvailability_rule_3",
+    "Spree::Promotion Usage Limit Exceeded::Decision_PromotionUsageLimitExceeded_rule_1",
+    "Spree::Promotion Usage Limit Exceeded::Decision_PromotionUsageLimitExceeded_rule_2",
+    "Spree::Promotion Usage Limit Exceeded::Decision_PromotionUsageLimitExceeded_rule_3",
+    "Spree::Promotion Usage Limit Exceeded::Decision_PromotionUsageLimitExceeded_rule_4",
+    "Spree::Promotion Tiered Percent Discount Selection::Decision_PromotionTieredPercentSelection_rule_1",
+    "Spree::Promotion Tiered Percent Discount Selection::Decision_PromotionTieredPercentSelection_rule_2",
+    "Spree::Promotion Tiered Percent Discount Selection::Decision_PromotionTieredPercentSelection_rule_3",
+    "Spree::Price List Volume Adjustment Tier Selection::Decision_PriceListAdjustmentTierSelection_rule_1",
+    "Spree::Price List Volume Adjustment Tier Selection::Decision_PriceListAdjustmentTierSelection_rule_2",
+    "Spree::Price List Volume Adjustment Tier Selection::Decision_PriceListAdjustmentTierSelection_rule_3"
+  ]
+}

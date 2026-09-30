@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{$\hat{A}_{12}$ of BRIDGE Against Each Baseline on Verified Coverage - RQ1, RQ2}
+\label{tab:rq1stats}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Case study}} & \multicolumn{3}{c|}{\textbf{Budget $1B$}} & \multicolumn{3}{c|}{\textbf{Budget $5B$}} & \multicolumn{3}{c|}{\textbf{Budget $10B$}} \\
+\cline{2-10}
+ & vs.\ GM & vs.\ GS & vs.\ SR & vs.\ GM & vs.\ GS & vs.\ SR & vs.\ GM & vs.\ GS & vs.\ SR \\
+\hline
+C02 jBilling & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* \\
+C03 OpenMRS & 0.63* & 0.50 & 1.00*$^{\dagger}$ & 0.50 & 0.50 & 1.00*$^{\dagger}$ & 0.50 & 0.50 & 1.00*$^{\dagger}$ \\
+C04 Spree & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* & 1.00* \\
+\hline
+\end{tabular}}
+\\[2pt]
+\footnotesize{* Significant after Holm correction ($p < 0.05$). Test used: Mann-Whitney U, chosen by the Shapiro-Wilk test. $^{\dagger}$ Based on 29 runs for SR in OpenMRS.}
+\end{table}

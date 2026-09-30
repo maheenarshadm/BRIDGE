@@ -1,0 +1,30 @@
+\begin{table*}[t]
+\centering
+\caption{Non-Trivial and Unreached Business Rules (Runs Out of 30 That Verify the Rule) - RQ1}
+\label{tab:rq1rules}
+\resizebox{0.9\textwidth}{!}{%
+\begin{tabular}{|l|l|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{CS}} & \multirow{2}{*}{\textbf{Decision, rule}} & \multicolumn{4}{c|}{\textbf{Budget $1B$}} & \multicolumn{4}{c|}{\textbf{Budget $10B$}} \\
+\cline{3-10}
+ & & BRIDGE & GM & GS & SR & BRIDGE & GM & GS & SR \\
+\hline
+C02 & Invoice Overdue, R2 & 30 & 0 & 0 & 30 & 30 & 0 & 0 & 30 \\
+C02 & Ageing Step Config Validation, R2 $^{u}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+C02 & Ageing Step Config Validation, R5 $^{u}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\hline
+C03 & Numeric Interpretation Class., R4 & 30 & 24 & 30 & 0/29 & 30 & 30 & 30 & 0/29 \\
+C03 & Obs Value Required By Datatype, R6 & 30 & 28 & 30 & 0/29 & 30 & 30 & 30 & 0/29 \\
+C03 & Identifier Format And Check Digit Validity, R1 $^{u}$ & 0 & 0 & 0 & 0/29 & 0 & 0 & 0 & 0/29 \\
+C03 & Identifier Uniqueness Check, R2 $^{u}$ & 0 & 0 & 0 & 1/29 & 0 & 0 & 0 & 6/29 \\
+\hline
+C04 & Price List Adjustment Tier Sel., R1 & 30 & 0 & 0 & 30 & 30 & 0 & 0 & 30 \\
+C04 & Price List Adjustment Tier Sel., R2 & 30 & 0 & 0 & 0 & 30 & 0 & 0 & 0 \\
+C04 & Promotion Temporal Availability, R1 & 24 & 0 & 0 & 30 & 21 & 0 & 0 & 30 \\
+C04 & Promotion Tiered Percent Sel., R1 & 30 & 0 & 0 & 30 & 30 & 0 & 0 & 30 \\
+C04 & Promotion Tiered Percent Sel., R2 & 30 & 0 & 0 & 0 & 30 & 0 & 0 & 0 \\
+\hline
+\end{tabular}}
+\\[2pt]
+\footnotesize{$^{u}$ Unreached by BRIDGE, GM and GS. All other in-scope rules are trivial (verified by BRIDGE, GM and GS in every run). Counts shown as $x/n$ are out of $n$ runs.}
+\end{table*}

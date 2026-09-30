@@ -1,0 +1,42 @@
+{
+  "name": "jBilling",
+  "grounding": {
+    "decision_col": "decision_name",
+    "variable_col": "variable_name",
+    "schema_col": "jbilling_column",
+    "notes_col": "notes",
+    "key_cols": [
+      "dmn_file",
+      "decision_name",
+      "variable_name",
+      "io"
+    ]
+  },
+  "not_persisted": [
+    "not_persisted.json",
+    "not_persisted_alternative.json"
+  ],
+  "known_constants": {},
+  "evaluated_objectives": [
+    "jBilling::Invoice Overdue Check::Decision_InvoiceOverdue_Rule_1",
+    "jBilling::Invoice Overdue Check::Decision_InvoiceOverdue_Rule_2",
+    "jBilling::Ageing Step Advancement::Decision_AgeingStepAdvancement_Rule_1",
+    "jBilling::Ageing Step Advancement::Decision_AgeingStepAdvancement_Rule_2",
+    "jBilling::Ageing Status Change Order Action::Decision_AgeingStatusChangeOrderAction_Rule_4",
+    "jBilling::Ageing Step Config Validation::Decision_AgeingStepConfigValidation_Rule_1",
+    "jBilling::Ageing Step Config Validation::Decision_AgeingStepConfigValidation_Rule_2",
+    "jBilling::Ageing Step Config Validation::Decision_AgeingStepConfigValidation_Rule_5",
+    "jBilling::Currency Exchange Rate Source::Decision_CurrencyExchangeRateSource_Rule_2",
+    "jBilling::Currency Exchange Rate Source::Decision_CurrencyExchangeRateSource_Rule_3",
+    "jBilling::Order Period Already Invoiced::Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+    "jBilling::Order Period Already Invoiced::Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+    "jBilling::Order Period Already Invoiced::Decision_OrderPeriodAlreadyInvoiced_Rule_4",
+    "jBilling::Blacklist Filter Enabled::Decision_BlacklistFilterEnabled_Rule_1",
+    "jBilling::Cycle Start Source::Decision_CycleStartSource_Rule_1",
+    "jBilling::Cycle Start Source::Decision_CycleStartSource_Rule_2",
+    "jBilling::Cycle Start Source::Decision_CycleStartSource_Rule_3",
+    "jBilling::Tax Calculation Needed::Decision_TaxCalculationNeeded_Rule_2",
+    "jBilling::Tax Calculation Mode::Decision_TaxCalculationMode_Rule_1",
+    "jBilling::Tax Calculation Mode::Decision_TaxCalculationMode_Rule_2"
+  ]
+}

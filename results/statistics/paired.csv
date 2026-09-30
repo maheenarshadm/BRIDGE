@@ -1,0 +1,37 @@
+case_study,metric,technique,budget,comparison,n_pairs,mean_archive,mean_final,test,statistic,df,p,normality_of_differences,p_holm,significant
+OpenMRS,verified,BRIDGE,1x,archive vs final,30,52.97,53,Wilcoxon signed-rank,0,,1,non-normal,1,False
+OpenMRS,verified,BRIDGE,5x,archive vs final,30,53,53,identical (no test),,,1,constant,1,False
+OpenMRS,verified,BRIDGE,10x,archive vs final,30,53,53,identical (no test),,,1,constant,1,False
+OpenMRS,verified,GM,1x,archive vs final,30,52.6,52.4,Wilcoxon signed-rank,49.5,,0.12,non-normal,0.4798,False
+OpenMRS,verified,GM,5x,archive vs final,30,53,51.9,Wilcoxon signed-rank,465,,1.532e-07,non-normal,7.658e-07,True
+OpenMRS,verified,GM,10x,archive vs final,30,53,51.93,Wilcoxon signed-rank,465,,1.079e-07,non-normal,6.476e-07,True
+Spree,verified,BRIDGE,1x,archive vs final,30,20.6,20.53,Wilcoxon signed-rank,60,,0.6179,non-normal,1,False
+Spree,verified,BRIDGE,5x,archive vs final,30,20.63,20.23,Wilcoxon signed-rank,135,,0.01749,non-normal,0.105,False
+Spree,verified,BRIDGE,10x,archive vs final,30,20.57,20.37,Wilcoxon signed-rank,75,,0.1169,non-normal,0.5845,False
+Spree,verified,GM,1x,archive vs final,30,16,16,identical (no test),,,1,constant,1,False
+Spree,verified,GM,5x,archive vs final,30,16,16,identical (no test),,,1,constant,1,False
+Spree,verified,GM,10x,archive vs final,30,16,16,identical (no test),,,1,constant,1,False
+jBilling,verified,BRIDGE,1x,archive vs final,30,17.87,17.33,Wilcoxon signed-rank,218.5,,0.0006921,non-normal,0.002769,True
+jBilling,verified,BRIDGE,5x,archive vs final,30,17.93,17,Wilcoxon signed-rank,406,,1.303e-07,non-normal,7.816e-07,True
+jBilling,verified,BRIDGE,10x,archive vs final,30,17.93,17,Wilcoxon signed-rank,406,,1.303e-07,non-normal,7.816e-07,True
+jBilling,verified,GM,1x,archive vs final,30,16.97,17,Wilcoxon signed-rank,0,,1,non-normal,1,False
+jBilling,verified,GM,5x,archive vs final,30,17,17,identical (no test),,,1,constant,1,False
+jBilling,verified,GM,10x,archive vs final,30,17,17,identical (no test),,,1,constant,1,False
+OpenMRS,suite_size,BRIDGE,1x,archive vs final,30,14.5,7.9,paired t-test,16.87,29,1.569e-16,normal,6.277e-16,True
+OpenMRS,suite_size,BRIDGE,5x,archive vs final,30,14.77,3.833,paired t-test,32.94,29,1.579e-24,normal,7.894e-24,True
+OpenMRS,suite_size,BRIDGE,10x,archive vs final,30,14.5,2.633,paired t-test,35.82,29,1.462e-25,normal,8.77e-25,True
+OpenMRS,suite_size,GM,1x,archive vs final,30,5.733,3.567,Wilcoxon signed-rank,460.5,,2.288e-06,non-normal,6.253e-06,True
+OpenMRS,suite_size,GM,5x,archive vs final,30,5.3,3.367,Wilcoxon signed-rank,351,,6.815e-06,non-normal,6.815e-06,True
+OpenMRS,suite_size,GM,10x,archive vs final,30,5.6,3.3,Wilcoxon signed-rank,435,,2.084e-06,non-normal,6.253e-06,True
+Spree,suite_size,BRIDGE,1x,archive vs final,30,5,1.067,Wilcoxon signed-rank,463.5,,1.589e-06,non-normal,8.38e-06,True
+Spree,suite_size,BRIDGE,5x,archive vs final,30,5.433,1.033,Wilcoxon signed-rank,465,,1.397e-06,non-normal,8.38e-06,True
+Spree,suite_size,BRIDGE,10x,archive vs final,30,5.133,1,Wilcoxon signed-rank,465,,1.493e-06,non-normal,8.38e-06,True
+Spree,suite_size,GM,1x,archive vs final,30,1.533,1.267,Wilcoxon signed-rank,102,,0.04877,non-normal,0.1463,False
+Spree,suite_size,GM,5x,archive vs final,30,1.567,1.4,Wilcoxon signed-rank,80,,0.2081,non-normal,0.2338,False
+Spree,suite_size,GM,10x,archive vs final,30,1.6,1.4,Wilcoxon signed-rank,75,,0.1169,non-normal,0.2338,False
+jBilling,suite_size,BRIDGE,1x,archive vs final,30,2.5,1,Wilcoxon signed-rank,465,,6.212e-07,non-normal,2.485e-06,True
+jBilling,suite_size,BRIDGE,5x,archive vs final,30,2.233,1,Wilcoxon signed-rank,465,,2.763e-07,non-normal,1.658e-06,True
+jBilling,suite_size,BRIDGE,10x,archive vs final,30,2.233,1,Wilcoxon signed-rank,465,,2.763e-07,non-normal,1.658e-06,True
+jBilling,suite_size,GM,1x,archive vs final,30,1.933,1.6,Wilcoxon signed-rank,90,,0.008365,non-normal,0.01673,True
+jBilling,suite_size,GM,5x,archive vs final,30,1.933,1.5,Wilcoxon signed-rank,112,,0.0008864,non-normal,0.002659,True
+jBilling,suite_size,GM,10x,archive vs final,30,1.867,1.567,Wilcoxon signed-rank,84,,0.0317,non-normal,0.0317,True

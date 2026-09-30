@@ -1,0 +1,120 @@
+dmn_file,decision_name,variable_name,io,openmrs_table_column,mapping_type,notes
+Person_Demographics_Validation.dmn,Birthdate Validity,yearsSinceBirthdate,input,person.birthdate,derived,"TIMESTAMPDIFF(YEAR, birthdate, CURRENT_DATE)"
+Person_Demographics_Validation.dmn,Birthdate Validity,birthdateValid,output,n/a,not-persisted,"validation outcome only, not stored"
+Person_Demographics_Validation.dmn,Birthdate Validity,reasonCode,output,n/a,not-persisted,"validation outcome only, not stored"
+Person_Demographics_Validation.dmn,Death Record Consistency,dead,input,person.dead,direct - exact match,
+Person_Demographics_Validation.dmn,Death Record Consistency,causeOfDeathSet,input,person.cause_of_death,derived,cause_of_death IS NOT NULL (FK to concept)
+Person_Demographics_Validation.dmn,Death Record Consistency,causeOfDeathNonCodedSet,input,person.cause_of_death_non_coded,derived,cause_of_death_non_coded IS NOT NULL
+Person_Demographics_Validation.dmn,Death Record Consistency,deathRecordValid,output,n/a,not-persisted,
+Person_Demographics_Validation.dmn,Death Record Consistency,reasonCode,output,n/a,not-persisted,
+Person_Demographics_Validation.dmn,Death Date Consistency Violations,deathDateSet,input,person.death_date,derived,death_date IS NOT NULL
+Person_Demographics_Validation.dmn,Death Date Consistency,deathDateValid,output,n/a,not-persisted,Literal-expression decision (count(violationReasons) = 0) downstream of the *_Violations COLLECT table.
+Person_Demographics_Validation.dmn,Death Date Consistency Violations,violationReasons,output,n/a,not-persisted,"COLLECT hit policy: each true row contributes its reason to a list, since the Java method has no early return between these checks and can raise several at once."
+Patient_Identifier_Validation.dmn,Preferred Identifier Requirement,identifierCount,input,patient_identifier.patient_id,derived - aggregate,"COUNT(*) FROM patient_identifier GROUP BY patient_id (active or all, per patient.voided)"
+Patient_Identifier_Validation.dmn,Preferred Identifier Requirement,preferredIdentifierValid,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Preferred Identifier Requirement,reasonCode,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Identifier Location Requirement,locationSet,input,patient_identifier.location_id,derived,location_id IS NOT NULL
+Patient_Identifier_Validation.dmn,Identifier Location Requirement,locationBehavior,input,patient_identifier_type.location_behavior,direct - exact match,stored enum-like VARCHAR; null treated as REQUIRED per validator L96
+Patient_Identifier_Validation.dmn,Identifier Location Requirement,locationRequirementValid,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Identifier Location Requirement,reasonCode,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Identifier Uniqueness Check,uniquenessBehavior,input,patient_identifier_type.uniqueness_behavior,direct - exact match,
+Patient_Identifier_Validation.dmn,Identifier Uniqueness Check,inUseByAnotherPatient,input,"patient_identifier.identifier, patient_identifier.identifier_type, patient_identifier.patient_id",derived,EXISTS(SELECT 1 FROM patient_identifier pi2 WHERE pi2.identifier=this.identifier AND pi2.identifier_type=this.identifier_type AND pi2.patient_id<>this.patient_id AND pi2.voided=false)
+Patient_Identifier_Validation.dmn,Identifier Uniqueness Check,duplicateWithinSamePatient,input,"patient_identifier.identifier, patient_identifier.location_id, patient_identifier.patient_identifier_id",derived,"self-join over the same patient_id per PatientIdentifierValidator L112-130 (globally-unique type, or same/null location match)"
+Patient_Identifier_Validation.dmn,Identifier Uniqueness Check,identifierUniquenessValid,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Identifier Uniqueness Check,reasonCode,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Identifier Format Validity,identifierBlank,input,patient_identifier.identifier,derived,identifier IS NULL OR TRIM(identifier) = ''
+Patient_Identifier_Validation.dmn,Identifier Format Validity,formatSet,input,patient_identifier_type.format,derived,format IS NOT NULL
+Patient_Identifier_Validation.dmn,Identifier Format Validity,identifierMatchesFormat,input,"patient_identifier.identifier, patient_identifier_type.format",derived,"regex match of identifier against format (application-level, format is a regex string column)"
+Patient_Identifier_Validation.dmn,Identifier Format Validity,identifierFormatValid,output,n/a,not-persisted,
+Patient_Identifier_Validation.dmn,Identifier Format Validity,reasonCode,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Obs Value Required By Datatype,isObsGroup,input,obs.obs_group_id,derived,EXISTS child obs rows with obs_group_id = this.obs_id (self-referencing FK)
+Concept_and_Observation_Validation.dmn,Obs Value Required By Datatype,conceptDatatype,input,concept.datatype_id -> concept_datatype.name,direct - exact match,join obs.concept_id -> concept.concept_id -> concept.datatype_id -> concept_datatype.concept_datatype_id
+Concept_and_Observation_Validation.dmn,Obs Value Required By Datatype,requiredValueColumn,output,n/a,not-persisted,generation-guidance label; the value itself names a real obs.value_* column (see decision rules)
+Concept_and_Observation_Validation.dmn,Obs Group Value Exclusivity,isObsGroup,input,obs.obs_group_id,derived,same as above
+Concept_and_Observation_Validation.dmn,Obs Group Value Exclusivity,anyValueFieldSet,input,"obs.value_coded, obs.value_drug, obs.value_datetime, obs.value_numeric, obs.value_modifier, obs.value_text, obs.value_complex",derived,OR of IS NOT NULL across all value_* columns; NOTE: there is no obs.value_boolean column -- boolean answers are stored via value_coded pointing at the TRUE/FALSE concept
+Concept_and_Observation_Validation.dmn,Obs Group Value Exclusivity,obsStructureValid,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Obs Group Value Exclusivity,reasonCode,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Numeric Precision Validity,allowDecimal,input,concept_numeric.allow_decimal,direct - exact match,joined via obs.concept_id = concept_numeric.concept_id
+Concept_and_Observation_Validation.dmn,Numeric Precision Validity,valueNumericHasFraction,input,obs.value_numeric,derived,"MOD(value_numeric, 1) <> 0"
+Concept_and_Observation_Validation.dmn,Numeric Precision Validity,precisionValid,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Numeric Precision Validity,reasonCode,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,hiAbsoluteSet,input,concept_numeric.hi_absolute (or concept_reference_range.hi_absolute),derived,IS NOT NULL; OpenMRS >=2.7 prefers a matching concept_reference_range row when criteria matches the person
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,lowAbsoluteSet,input,concept_numeric.low_absolute (or concept_reference_range.low_absolute),derived,IS NOT NULL
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,absoluteRangeValid,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,reasonCode,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Numeric Interpretation Classification,interpretation,output,obs.interpretation,direct - exact match,the ONE output in this rule set that is itself a persisted column
+Concept_and_Observation_Validation.dmn,Concept Preferred Name Validity,localePreferred,input,concept_name.locale_preferred,direct - exact match,
+Concept_and_Observation_Validation.dmn,Concept Preferred Name Validity,isIndexTerm,input,concept_name.concept_name_type,derived,concept_name_type = 'INDEX_TERM'
+Concept_and_Observation_Validation.dmn,Concept Preferred Name Validity,isShortName,input,concept_name.concept_name_type,derived,concept_name_type = 'SHORT'
+Concept_and_Observation_Validation.dmn,Concept Preferred Name Validity,voided,input,concept_name.voided,direct - exact match,
+Concept_and_Observation_Validation.dmn,Concept Preferred Name Validity,preferredNameValid,output,n/a,not-persisted,
+Concept_and_Observation_Validation.dmn,Concept Preferred Name Validity,reasonCode,output,n/a,not-persisted,
+Order_Validation.dmn,Order Date Activated Consistency Violations,dateActivatedSet,input,orders.date_activated,derived,IS NOT NULL
+Order_Validation.dmn,Order Date Activated Consistency Violations,dateStoppedSet,input,orders.date_stopped,derived,IS NOT NULL
+Order_Validation.dmn,Order Date Activated Consistency Violations,autoExpireDateSet,input,orders.auto_expire_date,derived,IS NOT NULL
+Order_Validation.dmn,Order Date Activated Consistency Violations,encounterDatetimeSet,input,encounter.encounter_datetime,derived,joined via orders.encounter_id; IS NOT NULL
+Order_Validation.dmn,Order Date Activated Consistency,dateActivatedValid,output,n/a,not-persisted,Literal-expression decision (count(violationReasons) = 0) downstream of the *_Violations COLLECT table.
+Order_Validation.dmn,Order Date Activated Consistency Violations,violationReasons,output,n/a,not-persisted,"COLLECT hit policy: each true row contributes its reason to a list, since the Java method has no early return between these checks and can raise several at once."
+Order_Validation.dmn,Order Scheduled Date Urgency Consistency,scheduledDateSet,input,orders.scheduled_date,derived,IS NOT NULL
+Order_Validation.dmn,Order Scheduled Date Urgency Consistency,scheduledDateUrgencyValid,output,n/a,not-persisted,
+Order_Validation.dmn,Order Scheduled Date Urgency Consistency,reasonCode,output,n/a,not-persisted,
+Program_Enrollment_Validation.dmn,Program Enrollment Date Consistency Violations,dateCompletedSet,input,patient_program.date_completed,derived,IS NOT NULL
+Program_Enrollment_Validation.dmn,Program Enrollment Date Consistency,enrollmentDatesValid,output,n/a,not-persisted,Literal-expression decision (count(violationReasons) = 0) downstream of the *_Violations COLLECT table.
+Program_Enrollment_Validation.dmn,Program Enrollment Date Consistency Violations,violationReasons,output,n/a,not-persisted,"COLLECT hit policy: each true row contributes its reason to a list, since the Java method has no early return between these checks and can raise several at once."
+Program_Enrollment_Validation.dmn,Patient State Date Validity,startDateSet,input,patient_state.start_date,derived,IS NOT NULL
+Program_Enrollment_Validation.dmn,Patient State Date Validity,endDateSet,input,patient_state.end_date,derived,IS NOT NULL
+Program_Enrollment_Validation.dmn,Patient State Date Validity,patientStateDatesValid,output,n/a,not-persisted,
+Program_Enrollment_Validation.dmn,Patient State Date Validity,reasonCode,output,n/a,not-persisted,
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity Violations,startDateSet,input,relationship.start_date,derived,IS NOT NULL
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity Violations,endDateSet,input,relationship.end_date,derived,IS NOT NULL
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity,relationshipDatesValid,output,n/a,not-persisted,Literal-expression decision (count(violationReasons) = 0) downstream of the *_Violations COLLECT table.
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity Violations,violationReasons,output,n/a,not-persisted,"COLLECT hit policy: each true row contributes its reason to a list, since the Java method has no early return between these checks and can raise several at once."
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,visitSet,input,encounter.visit_id,derived,IS NOT NULL
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity,encounterDatetimeValid,output,n/a,not-persisted,Literal-expression decision (count(violationReasons) = 0) downstream of the *_Violations COLLECT table.
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,violationReasons,output,n/a,not-persisted,"COLLECT hit policy: each true row contributes its reason to a list, since the Java method has no early return between these checks and can raise several at once."
+Person_Demographics_Validation.dmn,Birthdate Validity,birthdate,input,person.birthdate,direct,exposed directly
+Person_Demographics_Validation.dmn,Birthdate Validity,evaluationTime,input,n/a,not-persisted,"scenario/runtime parameter (time of validation), not a stored column"
+Person_Demographics_Validation.dmn,Death Date Consistency Violations,deathDate,input,person.death_date,direct,exposed directly
+Person_Demographics_Validation.dmn,Death Date Consistency Violations,evaluationTime,input,n/a,not-persisted,scenario/runtime parameter
+Person_Demographics_Validation.dmn,Death Date Consistency Violations,birthdate,input,person.birthdate,direct,exposed directly for the cross-variable deathDate < birthdate comparison
+Patient_Identifier_Validation.dmn,Preferred Identifier Requirement,preferredIdentifierCount,input,patient_identifier.preferred,derived-aggregate,COUNT(*) FROM patient_identifier WHERE patient_id=? AND preferred=true
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,valueNumeric,input,obs.value_numeric,direct,exposed directly
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,hiAbsolute,input,concept_numeric.hi_absolute (or concept_reference_range.hi_absolute),direct,exposed directly for the cross-variable comparison
+Concept_and_Observation_Validation.dmn,Numeric Absolute Range Validity,lowAbsolute,input,concept_numeric.low_absolute (or concept_reference_range.low_absolute),direct,exposed directly for the cross-variable comparison
+Concept_and_Observation_Validation.dmn,Numeric Interpretation Classification,valueNumeric,input,obs.value_numeric,direct,exposed directly; a single FIRST-hit threshold ladder over the reference-range columns
+Concept_and_Observation_Validation.dmn,Numeric Interpretation Classification,hiCritical,input,concept_numeric.hi_critical,direct,threshold column referenced by valueNumeric's comparisons
+Concept_and_Observation_Validation.dmn,Numeric Interpretation Classification,hiNormal,input,concept_numeric.hi_normal,direct,threshold column
+Concept_and_Observation_Validation.dmn,Numeric Interpretation Classification,lowCritical,input,concept_numeric.low_critical,direct,threshold column
+Concept_and_Observation_Validation.dmn,Numeric Interpretation Classification,lowNormal,input,concept_numeric.low_normal,direct,threshold column
+Order_Validation.dmn,Order Date Activated Consistency Violations,dateActivated,input,orders.date_activated,direct,exposed directly
+Order_Validation.dmn,Order Date Activated Consistency Violations,evaluationTime,input,n/a,not-persisted,scenario/runtime parameter
+Order_Validation.dmn,Order Date Activated Consistency Violations,dateStopped,input,orders.date_stopped,direct,"exposed directly, replacing dateActivatedAfterDateStopped"
+Order_Validation.dmn,Order Date Activated Consistency Violations,autoExpireDate,input,orders.auto_expire_date,direct,"exposed directly, replacing dateActivatedAfterAutoExpireDate"
+Order_Validation.dmn,Order Date Activated Consistency Violations,encounterDatetime,input,encounter.encounter_datetime,derived,"joined via orders.encounter_id; exposed directly, replacing encounterDatetimeAfterDateActivated"
+Order_Validation.dmn,Order Scheduled Date Urgency Consistency,urgency,input,orders.urgency,direct,"exposed directly as a categorical test (= ""ON_SCHEDULED_DATE"")"
+Program_Enrollment_Validation.dmn,Program Enrollment Date Consistency Violations,dateEnrolled,input,patient_program.date_enrolled,direct,exposed directly
+Program_Enrollment_Validation.dmn,Program Enrollment Date Consistency Violations,evaluationTime,input,n/a,not-persisted,scenario/runtime parameter
+Program_Enrollment_Validation.dmn,Program Enrollment Date Consistency Violations,dateCompleted,input,patient_program.date_completed,direct,"exposed directly, replacing dateCompletedIsFuture/dateCompletedBeforeDateEnrolled"
+Program_Enrollment_Validation.dmn,Patient State Date Validity,startDate,input,patient_state.start_date,direct,exposed directly
+Program_Enrollment_Validation.dmn,Patient State Date Validity,endDate,input,patient_state.end_date,direct,exposed directly for the cross-variable comparison
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity Violations,startDate,input,relationship.start_date,direct,exposed directly
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity Violations,evaluationTime,input,n/a,not-persisted,scenario/runtime parameter
+Relationship_and_Encounter_Validation.dmn,Relationship Date Validity Violations,endDate,input,relationship.end_date,direct,exposed directly for the cross-variable comparison
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,visitPatientId,input,visit.patient_id,derived,joined via encounter.visit_id = visit.visit_id; exposed as an ID-equality test
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,encounterPatientId,input,encounter.patient_id,direct,tested via != visitPatientId
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,encounterDatetime,input,encounter.encounter_datetime,direct,"exposed directly, replacing encounterDatetimeIsFuture/BeforeVisitStart/AfterVisitStop"
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,evaluationTime,input,n/a,not-persisted,scenario/runtime parameter
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,visitStartDatetime,input,visit.date_started,derived,joined via encounter.visit_id
+Relationship_and_Encounter_Validation.dmn,Encounter Datetime Validity Violations,visitStopDatetime,input,visit.date_stopped,derived,joined via encounter.visit_id
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Locale-Preferred-Name Uniqueness,localePreferredNameCount,input,COUNT(*) FROM concept_name WHERE concept_id = :concept_id AND locale = :locale AND locale_preferred = true AND voided = false,derived-aggregate,"[ASSUMED: retired-concept exclusion not modeled; ConceptValidator.java skips retired concepts via conceptToValidate.getRetired(), a fact on concept.retired, not concept_name]"
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Locale-Preferred-Name Uniqueness,localePreferredNameValid,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Locale-Preferred-Name Uniqueness,reasonCode,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Fully-Specified-Name Uniqueness Per Locale,fullySpecifiedNameCountInLocale,input,COUNT(*) FROM concept_name WHERE concept_id = :concept_id AND locale = :locale AND concept_name_type = 'FULLY_SPECIFIED' AND voided = false,derived-aggregate,[ASSUMED: retired-concept exclusion not modeled]
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Fully-Specified-Name Uniqueness Per Locale,fullySpecifiedNameValid,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Fully-Specified-Name Uniqueness Per Locale,reasonCode,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Short-Name Uniqueness Per Locale,shortNameCountInLocale,input,COUNT(*) FROM concept_name WHERE concept_id = :concept_id AND locale = :locale AND concept_name_type = 'SHORT' AND voided = false,derived-aggregate,[ASSUMED: retired-concept exclusion not modeled]
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Short-Name Uniqueness Per Locale,shortNameValid,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Short-Name Uniqueness Per Locale,reasonCode,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Fully-Specified-Name Presence Requirement,fullySpecifiedNameCount,input,COUNT(*) FROM concept_name WHERE concept_id = :concept_id AND concept_name_type = 'FULLY_SPECIFIED' AND voided = false,derived-aggregate,[ASSUMED: retired-concept exclusion not modeled]
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Fully-Specified-Name Presence Requirement,fullySpecifiedNamePresent,output,n/a,not-persisted,
+Concept_Name_Uniqueness_And_Presence.dmn,Concept Fully-Specified-Name Presence Requirement,reasonCode,output,n/a,not-persisted,

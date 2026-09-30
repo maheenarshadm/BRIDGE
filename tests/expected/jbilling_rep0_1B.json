@@ -1,0 +1,153 @@
+{
+  "case_study": "jBilling",
+  "budget_multiplier": 1,
+  "rep": 0,
+  "runs": {
+    "dynamosa": {
+      "seed": 1000,
+      "budget_evaluations": 78970,
+      "evaluations_used": 78970,
+      "verified_rules": [
+        "Decision_AgeingStatusChangeOrderAction_Rule_4",
+        "Decision_AgeingStepAdvancement_Rule_1",
+        "Decision_AgeingStepAdvancement_Rule_2",
+        "Decision_AgeingStepConfigValidation_Rule_1",
+        "Decision_BlacklistFilterEnabled_Rule_1",
+        "Decision_CurrencyExchangeRateSource_Rule_2",
+        "Decision_CurrencyExchangeRateSource_Rule_3",
+        "Decision_CycleStartSource_Rule_1",
+        "Decision_CycleStartSource_Rule_2",
+        "Decision_CycleStartSource_Rule_3",
+        "Decision_InvoiceOverdue_Rule_1",
+        "Decision_InvoiceOverdue_Rule_2",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_4",
+        "Decision_TaxCalculationMode_Rule_1",
+        "Decision_TaxCalculationMode_Rule_2",
+        "Decision_TaxCalculationNeeded_Rule_2"
+      ],
+      "claimed_rules": [
+        "Decision_AgeingStatusChangeOrderAction_Rule_4",
+        "Decision_AgeingStepAdvancement_Rule_1",
+        "Decision_AgeingStepAdvancement_Rule_2",
+        "Decision_AgeingStepConfigValidation_Rule_1",
+        "Decision_AgeingStepConfigValidation_Rule_2",
+        "Decision_BlacklistFilterEnabled_Rule_1",
+        "Decision_CurrencyExchangeRateSource_Rule_2",
+        "Decision_CurrencyExchangeRateSource_Rule_3",
+        "Decision_CycleStartSource_Rule_1",
+        "Decision_CycleStartSource_Rule_2",
+        "Decision_CycleStartSource_Rule_3",
+        "Decision_InvoiceOverdue_Rule_1",
+        "Decision_InvoiceOverdue_Rule_2",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_4",
+        "Decision_TaxCalculationMode_Rule_1",
+        "Decision_TaxCalculationMode_Rule_2",
+        "Decision_TaxCalculationNeeded_Rule_2"
+      ],
+      "suite_size": {
+        "archive": 2,
+        "final": 1,
+        "union": 2
+      }
+    },
+    "random_walk": {
+      "seed": 1000,
+      "budget_evaluations": 78970,
+      "evaluations_used": 78970,
+      "verified_rules": [
+        "Decision_AgeingStatusChangeOrderAction_Rule_4",
+        "Decision_AgeingStepAdvancement_Rule_1",
+        "Decision_AgeingStepAdvancement_Rule_2",
+        "Decision_AgeingStepConfigValidation_Rule_1",
+        "Decision_BlacklistFilterEnabled_Rule_1",
+        "Decision_CurrencyExchangeRateSource_Rule_2",
+        "Decision_CurrencyExchangeRateSource_Rule_3",
+        "Decision_CycleStartSource_Rule_1",
+        "Decision_CycleStartSource_Rule_2",
+        "Decision_CycleStartSource_Rule_3",
+        "Decision_InvoiceOverdue_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_4",
+        "Decision_TaxCalculationMode_Rule_1",
+        "Decision_TaxCalculationMode_Rule_2",
+        "Decision_TaxCalculationNeeded_Rule_2"
+      ],
+      "claimed_rules": [
+        "Decision_AgeingStatusChangeOrderAction_Rule_4",
+        "Decision_AgeingStepAdvancement_Rule_1",
+        "Decision_AgeingStepAdvancement_Rule_2",
+        "Decision_AgeingStepConfigValidation_Rule_1",
+        "Decision_AgeingStepConfigValidation_Rule_2",
+        "Decision_BlacklistFilterEnabled_Rule_1",
+        "Decision_CurrencyExchangeRateSource_Rule_2",
+        "Decision_CurrencyExchangeRateSource_Rule_3",
+        "Decision_CycleStartSource_Rule_1",
+        "Decision_CycleStartSource_Rule_2",
+        "Decision_CycleStartSource_Rule_3",
+        "Decision_InvoiceOverdue_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+        "Decision_TaxCalculationMode_Rule_1",
+        "Decision_TaxCalculationMode_Rule_2",
+        "Decision_TaxCalculationNeeded_Rule_2"
+      ],
+      "suite_size": {
+        "archive": 2,
+        "final": 2,
+        "union": 2
+      }
+    },
+    "random_sample": {
+      "seed": 1000,
+      "budget_evaluations": 78970,
+      "evaluations_used": 78970,
+      "verified_rules": [
+        "Decision_AgeingStatusChangeOrderAction_Rule_4",
+        "Decision_AgeingStepAdvancement_Rule_1",
+        "Decision_AgeingStepAdvancement_Rule_2",
+        "Decision_AgeingStepConfigValidation_Rule_1",
+        "Decision_BlacklistFilterEnabled_Rule_1",
+        "Decision_CurrencyExchangeRateSource_Rule_2",
+        "Decision_CurrencyExchangeRateSource_Rule_3",
+        "Decision_CycleStartSource_Rule_1",
+        "Decision_CycleStartSource_Rule_2",
+        "Decision_CycleStartSource_Rule_3",
+        "Decision_InvoiceOverdue_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_4",
+        "Decision_TaxCalculationMode_Rule_1",
+        "Decision_TaxCalculationMode_Rule_2",
+        "Decision_TaxCalculationNeeded_Rule_2"
+      ],
+      "claimed_rules": [
+        "Decision_AgeingStatusChangeOrderAction_Rule_4",
+        "Decision_AgeingStepAdvancement_Rule_1",
+        "Decision_AgeingStepAdvancement_Rule_2",
+        "Decision_AgeingStepConfigValidation_Rule_1",
+        "Decision_AgeingStepConfigValidation_Rule_2",
+        "Decision_BlacklistFilterEnabled_Rule_1",
+        "Decision_CurrencyExchangeRateSource_Rule_2",
+        "Decision_CurrencyExchangeRateSource_Rule_3",
+        "Decision_CycleStartSource_Rule_1",
+        "Decision_CycleStartSource_Rule_2",
+        "Decision_CycleStartSource_Rule_3",
+        "Decision_InvoiceOverdue_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+        "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+        "Decision_TaxCalculationMode_Rule_1",
+        "Decision_TaxCalculationMode_Rule_2",
+        "Decision_TaxCalculationNeeded_Rule_2"
+      ],
+      "suite_size": {
+        "archive": 2,
+        "union": 2
+      }
+    }
+  }
+}

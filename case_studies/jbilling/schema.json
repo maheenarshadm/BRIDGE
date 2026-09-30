@@ -1,0 +1,4267 @@
+{
+  "ach": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "account_type": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "aba_routing": {
+        "type": "character varying(40)",
+        "null_false": true
+      },
+      "bank_account": {
+        "type": "character varying(60)",
+        "null_false": true
+      },
+      "bank_name": {
+        "type": "character varying(50)",
+        "null_false": true
+      },
+      "account_name": {
+        "type": "character varying(100)",
+        "null_false": true
+      },
+      "gateway_key": {
+        "type": "character varying(100)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user"
+    ],
+    "fk_columns": [
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "ageing_entity_step": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "status_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "days": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "base_user": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "language_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "status_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "subscriber_status": {
+        "type": "integer",
+        "null_false": false
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "last_status_change": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "last_login": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "failed_attempts": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "password": {
+        "type": "character varying(40)",
+        "null_false": false
+      },
+      "user_name": {
+        "type": "character varying(50)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "currency",
+      "entity",
+      "language"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "language_id",
+        "ref_table": "language",
+        "ref_column": "id"
+      },
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "billing_process": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "billing_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "period_unit_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "period_value": {
+        "type": "integer",
+        "null_false": true
+      },
+      "is_review": {
+        "type": "integer",
+        "null_false": true
+      },
+      "paper_invoice_batch_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "retries_to_do": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity",
+      "paper_invoice_batch",
+      "period_unit"
+    ],
+    "fk_columns": [
+      {
+        "column": "period_unit_id",
+        "ref_table": "period_unit",
+        "ref_column": "id"
+      },
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "paper_invoice_batch_id",
+        "ref_table": "paper_invoice_batch",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "billing_process_configuration": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "next_run_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "generate_report": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "retries": {
+        "type": "integer",
+        "null_false": false
+      },
+      "days_for_retry": {
+        "type": "integer",
+        "null_false": false
+      },
+      "days_for_report": {
+        "type": "integer",
+        "null_false": false
+      },
+      "review_status": {
+        "type": "integer",
+        "null_false": true
+      },
+      "period_unit_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "period_value": {
+        "type": "integer",
+        "null_false": true
+      },
+      "due_date_unit_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "due_date_value": {
+        "type": "integer",
+        "null_false": true
+      },
+      "df_fm": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "only_recurring": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "invoice_date_process": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "auto_payment": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "maximum_periods": {
+        "type": "integer",
+        "null_false": true
+      },
+      "auto_payment_application": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity",
+      "period_unit"
+    ],
+    "fk_columns": [
+      {
+        "column": "period_unit_id",
+        "ref_table": "period_unit",
+        "ref_column": "id"
+      },
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "blacklist": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "type": {
+        "type": "integer",
+        "null_false": true
+      },
+      "source": {
+        "type": "integer",
+        "null_false": true
+      },
+      "credit_card": {
+        "type": "integer",
+        "null_false": false
+      },
+      "credit_card_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "contact_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "base_user",
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "breadcrumb": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "object_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "version": {
+        "type": "integer",
+        "null_false": true
+      },
+      "controller": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "action": {
+        "type": "character varying(255)",
+        "null_false": false
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": false
+      },
+      "description": {
+        "type": "character varying(255)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "cdrentries": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "start": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "answer": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "duration": {
+        "type": "integer",
+        "null_false": false
+      },
+      "billsec": {
+        "type": "integer",
+        "null_false": false
+      },
+      "ts": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "accountcode": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "src": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "dst": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "dcontext": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "clid": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "channel": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "dstchannel": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "lastapp": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "lastdatat": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "disposition": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "amaflags": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "userfield": {
+        "type": "character varying(100)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "contact": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "phone_country_code": {
+        "type": "integer",
+        "null_false": false
+      },
+      "phone_area_code": {
+        "type": "integer",
+        "null_false": false
+      },
+      "fax_country_code": {
+        "type": "integer",
+        "null_false": false
+      },
+      "fax_area_code": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "notification_include": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "organization_name": {
+        "type": "character varying(200)",
+        "null_false": false
+      },
+      "street_addres1": {
+        "type": "character varying(100)",
+        "null_false": false
+      },
+      "street_addres2": {
+        "type": "character varying(100)",
+        "null_false": false
+      },
+      "city": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "state_province": {
+        "type": "character varying(30)",
+        "null_false": false
+      },
+      "postal_code": {
+        "type": "character varying(15)",
+        "null_false": false
+      },
+      "country_code": {
+        "type": "character varying(2)",
+        "null_false": false
+      },
+      "last_name": {
+        "type": "character varying(30)",
+        "null_false": false
+      },
+      "first_name": {
+        "type": "character varying(30)",
+        "null_false": false
+      },
+      "person_initial": {
+        "type": "character varying(5)",
+        "null_false": false
+      },
+      "person_title": {
+        "type": "character varying(40)",
+        "null_false": false
+      },
+      "phone_phone_number": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "fax_phone_number": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "email": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "contact_field": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "contact_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "content": {
+        "type": "character varying(100)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "contact",
+      "contact_field_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "contact_id",
+        "ref_table": "contact",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "contact_field_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "contact_field_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "customer_readonly": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "prompt_key": {
+        "type": "character varying(50)",
+        "null_false": true
+      },
+      "data_type": {
+        "type": "character varying(10)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "contact_map": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "contact_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "table_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "foreign_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "contact",
+      "contact_type",
+      "jbilling_table"
+    ],
+    "fk_columns": [
+      {
+        "column": "table_id",
+        "ref_table": "jbilling_table",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "contact_type",
+        "ref_column": "id"
+      },
+      {
+        "column": "contact_id",
+        "ref_table": "contact",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "contact_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "is_primary": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "country": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "code": {
+        "type": "character varying(2)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "credit_card": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "cc_expiry": {
+        "type": "date",
+        "null_false": true
+      },
+      "cc_type": {
+        "type": "integer",
+        "null_false": true
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "cc_number": {
+        "type": "character varying(100)",
+        "null_false": true
+      },
+      "cc_number_plain": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "name": {
+        "type": "character varying(150)",
+        "null_false": false
+      },
+      "gateway_key": {
+        "type": "character varying(100)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "currency": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": false
+      },
+      "symbol": {
+        "type": "character varying(10)",
+        "null_false": true
+      },
+      "code": {
+        "type": "character varying(3)",
+        "null_false": true
+      },
+      "country_code": {
+        "type": "character varying(2)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "currency_entity_map": {
+    "pk": null,
+    "columns": {
+      "currency_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "currency",
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "currency_exchange": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "rate": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "currency"
+    ],
+    "fk_columns": [
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "customer": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "partner_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "referral_fee_paid": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "invoice_delivery_method_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "auto_payment_type": {
+        "type": "integer",
+        "null_false": false
+      },
+      "due_date_unit_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "due_date_value": {
+        "type": "integer",
+        "null_false": false
+      },
+      "df_fm": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "parent_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "is_parent": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "exclude_aging": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "invoice_child": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "current_order_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "balance_type": {
+        "type": "integer",
+        "null_false": true
+      },
+      "notes": {
+        "type": "character varying(1000)",
+        "null_false": false
+      },
+      "dynamic_balance": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "credit_limit": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "auto_recharge": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user",
+      "invoice_delivery_method",
+      "partner"
+    ],
+    "fk_columns": [
+      {
+        "column": "invoice_delivery_method_id",
+        "ref_table": "invoice_delivery_method",
+        "ref_column": "id"
+      },
+      {
+        "column": "partner_id",
+        "ref_table": "partner",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "entity": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "language_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "external_id": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "description": {
+        "type": "character varying(100)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "currency",
+      "language"
+    ],
+    "fk_columns": [
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "language_id",
+        "ref_table": "language",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "entity_delivery_method_map": {
+    "pk": null,
+    "columns": {
+      "method_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "entity",
+      "invoice_delivery_method"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "method_id",
+        "ref_table": "invoice_delivery_method",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "entity_payment_method_map": {
+    "pk": null,
+    "columns": {
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "payment_method_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "entity",
+      "payment_method"
+    ],
+    "fk_columns": [
+      {
+        "column": "payment_method_id",
+        "ref_table": "payment_method",
+        "ref_column": "id"
+      },
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "entity_report_map": {
+    "pk": null,
+    "columns": {
+      "report_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity",
+      "report"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "report_id",
+        "ref_table": "report",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "event_log": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "table_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "foreign_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "level_field": {
+        "type": "integer",
+        "null_false": true
+      },
+      "module_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "message_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "old_num": {
+        "type": "integer",
+        "null_false": false
+      },
+      "old_date": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "affected_user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "old_str": {
+        "type": "character varying(1000)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user",
+      "entity",
+      "event_log_message",
+      "event_log_module",
+      "jbilling_table"
+    ],
+    "fk_columns": [
+      {
+        "column": "module_id",
+        "ref_table": "event_log_module",
+        "ref_column": "id"
+      },
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      },
+      {
+        "column": "table_id",
+        "ref_table": "jbilling_table",
+        "ref_column": "id"
+      },
+      {
+        "column": "message_id",
+        "ref_table": "event_log_message",
+        "ref_column": "id"
+      },
+      {
+        "column": "affected_user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "event_log_message": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "event_log_module": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "filter": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "filter_set_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "visible": {
+        "type": "boolean",
+        "null_false": true
+      },
+      "integer_value": {
+        "type": "integer",
+        "null_false": false
+      },
+      "start_date_value": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "end_date_value": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "version": {
+        "type": "integer",
+        "null_false": true
+      },
+      "boolean_value": {
+        "type": "boolean",
+        "null_false": false
+      },
+      "type": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "constraint_type": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "field": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "template": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "string_value": {
+        "type": "character varying(255)",
+        "null_false": false
+      },
+      "decimal_value": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "decimal_high_value": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "filter_set": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "version": {
+        "type": "integer",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "filter_set_filter": {
+    "pk": null,
+    "columns": {
+      "filter_set_filters_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "filter_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "generic_status": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "status_value": {
+        "type": "integer",
+        "null_false": true
+      },
+      "can_login": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "dtype": {
+        "type": "character varying(50)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "generic_status_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "dtype",
+        "ref_table": "generic_status_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "generic_status_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "character varying(50)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "international_description": {
+    "pk": [
+      "table_id",
+      "foreign_id",
+      "psudo_column",
+      "language_id"
+    ],
+    "columns": {
+      "table_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "foreign_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "language_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "psudo_column": {
+        "type": "character varying(20)",
+        "null_false": true
+      },
+      "content": {
+        "type": "character varying(4000)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "language"
+    ],
+    "fk_columns": [
+      {
+        "column": "language_id",
+        "ref_table": "language",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "invoice": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "billing_process_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "delegated_invoice_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "due_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "payment_attempts": {
+        "type": "integer",
+        "null_false": true
+      },
+      "status_id": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "in_process_payment": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "is_review": {
+        "type": "integer",
+        "null_false": true
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "paper_invoice_batch_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "last_reminder": {
+        "type": "date",
+        "null_false": false
+      },
+      "overdue_step": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_timestamp": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "total": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "balance": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "carried_balance": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "customer_notes": {
+        "type": "character varying(1000)",
+        "null_false": false
+      },
+      "public_number": {
+        "type": "character varying(40)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "billing_process",
+      "currency",
+      "invoice",
+      "paper_invoice_batch"
+    ],
+    "fk_columns": [
+      {
+        "column": "billing_process_id",
+        "ref_table": "billing_process",
+        "ref_column": "id"
+      },
+      {
+        "column": "paper_invoice_batch_id",
+        "ref_table": "paper_invoice_batch",
+        "ref_column": "id"
+      },
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "delegated_invoice_id",
+        "ref_table": "invoice",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "invoice_delivery_method": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "invoice_line": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "invoice_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "item_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "source_user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "is_percentage": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "amount": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "quantity": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "price": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "description": {
+        "type": "character varying(1000)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "invoice",
+      "invoice_line_type",
+      "item"
+    ],
+    "fk_columns": [
+      {
+        "column": "invoice_id",
+        "ref_table": "invoice",
+        "ref_column": "id"
+      },
+      {
+        "column": "item_id",
+        "ref_table": "item",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "invoice_line_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "invoice_line_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "order_position": {
+        "type": "integer",
+        "null_false": true
+      },
+      "description": {
+        "type": "character varying(50)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "item": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "has_decimals": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "price_manual": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "internal_number": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "percentage": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "gl_code": {
+        "type": "character varying(50)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "item_price": {
+    "pk": null,
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "item_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "price": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "currency",
+      "item"
+    ],
+    "fk_columns": [
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "item_id",
+        "ref_table": "item",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "item_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "order_line_type_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "internal": {
+        "type": "boolean",
+        "null_false": true
+      },
+      "description": {
+        "type": "character varying(100)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "entity"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "item_type_exclude_map": {
+    "pk": [
+      "item_id",
+      "type_id"
+    ],
+    "columns": {
+      "item_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "item",
+      "item_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "item_id",
+        "ref_table": "item",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "item_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "item_type_map": {
+    "pk": null,
+    "columns": {
+      "item_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "item",
+      "item_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "item_id",
+        "ref_table": "item",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "item_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "jbilling_seqs": {
+    "pk": null,
+    "columns": {
+      "next_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "jbilling_table": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(50)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "language": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "code": {
+        "type": "character varying(2)",
+        "null_false": true
+      },
+      "description": {
+        "type": "character varying(50)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "mediation_cfg": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "order_value": {
+        "type": "integer",
+        "null_false": true
+      },
+      "pluggable_task_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(50)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "pluggable_task"
+    ],
+    "fk_columns": [
+      {
+        "column": "pluggable_task_id",
+        "ref_table": "pluggable_task",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "mediation_errors": {
+    "pk": "accountcode",
+    "columns": {
+      "start": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "answer": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "duration": {
+        "type": "integer",
+        "null_false": false
+      },
+      "billsec": {
+        "type": "integer",
+        "null_false": false
+      },
+      "should_retry": {
+        "type": "boolean",
+        "null_false": false
+      },
+      "accountcode": {
+        "type": "character varying(50)",
+        "null_false": true
+      },
+      "src": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "dst": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "dcontext": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "clid": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "channel": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "dstchannel": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "lastapp": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "lastdata": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "disposition": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "amaflags": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "userfield": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "error_message": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "mediation_order_map": {
+    "pk": null,
+    "columns": {
+      "mediation_process_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "order_id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "mediation_process",
+      "purchase_order"
+    ],
+    "fk_columns": [
+      {
+        "column": "mediation_process_id",
+        "ref_table": "mediation_process",
+        "ref_column": "id"
+      },
+      {
+        "column": "order_id",
+        "ref_table": "purchase_order",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "mediation_process": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "configuration_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "start_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "end_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "orders_affected": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "mediation_cfg"
+    ],
+    "fk_columns": [
+      {
+        "column": "configuration_id",
+        "ref_table": "mediation_cfg",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "mediation_record": {
+    "pk": "id",
+    "columns": {
+      "start_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "mediation_process_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "status_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "id_key": {
+        "type": "character varying(100)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "generic_status",
+      "mediation_process"
+    ],
+    "fk_columns": [
+      {
+        "column": "mediation_process_id",
+        "ref_table": "mediation_process",
+        "ref_column": "id"
+      },
+      {
+        "column": "status_id",
+        "ref_table": "generic_status",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "mediation_record_line": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "order_line_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "event_date": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "mediation_record_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "amount": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "quantity": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "description": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "mediation_record",
+      "order_line"
+    ],
+    "fk_columns": [
+      {
+        "column": "mediation_record_id",
+        "ref_table": "mediation_record",
+        "ref_column": "id"
+      },
+      {
+        "column": "order_line_id",
+        "ref_table": "order_line",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_category": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_message": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "language_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "use_flag": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity",
+      "language",
+      "notification_message_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "language_id",
+        "ref_table": "language",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "notification_message_type",
+        "ref_column": "id"
+      },
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_message_arch": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "result_message": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_message_arch_line": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "message_archive_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "section": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "content": {
+        "type": "character varying(1000)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "notification_message_arch"
+    ],
+    "fk_columns": [
+      {
+        "column": "message_archive_id",
+        "ref_table": "notification_message_arch",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_message_line": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "message_section_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "content": {
+        "type": "character varying(1000)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "notification_message_section"
+    ],
+    "fk_columns": [
+      {
+        "column": "message_section_id",
+        "ref_table": "notification_message_section",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_message_section": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "message_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "section": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "notification_message"
+    ],
+    "fk_columns": [
+      {
+        "column": "message_id",
+        "ref_table": "notification_message",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "notification_message_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "category_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "notification_category"
+    ],
+    "fk_columns": [
+      {
+        "column": "category_id",
+        "ref_table": "notification_category",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "order_billing_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "order_line": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "order_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "item_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "item_price": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "provisioning_status": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "use_item": {
+        "type": "boolean",
+        "null_false": true
+      },
+      "amount": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "quantity": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "price": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "description": {
+        "type": "character varying(1000)",
+        "null_false": false
+      },
+      "provisioning_request_id": {
+        "type": "character varying(50)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "item",
+      "order_line_type",
+      "purchase_order"
+    ],
+    "fk_columns": [
+      {
+        "column": "item_id",
+        "ref_table": "item",
+        "ref_column": "id"
+      },
+      {
+        "column": "order_id",
+        "ref_table": "purchase_order",
+        "ref_column": "id"
+      },
+      {
+        "column": "type_id",
+        "ref_table": "order_line_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "order_line_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "editable": {
+        "type": "smallint",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "order_period": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "value": {
+        "type": "integer",
+        "null_false": false
+      },
+      "unit_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "entity",
+      "period_unit"
+    ],
+    "fk_columns": [
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      },
+      {
+        "column": "unit_id",
+        "ref_table": "period_unit",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "order_process": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "order_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "invoice_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "billing_process_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "periods_included": {
+        "type": "integer",
+        "null_false": false
+      },
+      "period_start": {
+        "type": "date",
+        "null_false": false
+      },
+      "period_end": {
+        "type": "date",
+        "null_false": false
+      },
+      "is_review": {
+        "type": "integer",
+        "null_false": true
+      },
+      "origin": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "purchase_order"
+    ],
+    "fk_columns": [
+      {
+        "column": "order_id",
+        "ref_table": "purchase_order",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "paper_invoice_batch": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "total_invoices": {
+        "type": "integer",
+        "null_false": true
+      },
+      "delivery_date": {
+        "type": "date",
+        "null_false": false
+      },
+      "is_self_managed": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "partner": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "fee_currency_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "one_time": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "period_unit_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "period_value": {
+        "type": "integer",
+        "null_false": true
+      },
+      "next_payout_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "automatic_process": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "related_clerk": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "balance": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "total_payments": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "total_refunds": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "total_payouts": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "percentage_rate": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "referral_fee": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "due_payout": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user",
+      "currency",
+      "period_unit"
+    ],
+    "fk_columns": [
+      {
+        "column": "period_unit_id",
+        "ref_table": "period_unit",
+        "ref_column": "id"
+      },
+      {
+        "column": "fee_currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "related_clerk",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "partner_payout": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "starting_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "ending_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "payment_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "partner_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "payments_amount": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "refunds_amount": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "balance_left": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "partner"
+    ],
+    "fk_columns": [
+      {
+        "column": "partner_id",
+        "ref_table": "partner",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "partner_range": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "partner_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "range_from": {
+        "type": "integer",
+        "null_false": true
+      },
+      "range_to": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "percentage_rate": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "referral_fee": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "payment": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "attempt": {
+        "type": "integer",
+        "null_false": false
+      },
+      "result_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "update_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "payment_date": {
+        "type": "date",
+        "null_false": false
+      },
+      "method_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "credit_card_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "is_refund": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "is_preauth": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "payment_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "payout_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "ach_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "payment_period": {
+        "type": "integer",
+        "null_false": false
+      },
+      "amount": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      },
+      "balance": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "payment_notes": {
+        "type": "character varying(500)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "ach",
+      "credit_card",
+      "currency",
+      "payment",
+      "payment_method",
+      "payment_result"
+    ],
+    "fk_columns": [
+      {
+        "column": "ach_id",
+        "ref_table": "ach",
+        "ref_column": "id"
+      },
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "payment_id",
+        "ref_table": "payment",
+        "ref_column": "id"
+      },
+      {
+        "column": "credit_card_id",
+        "ref_table": "credit_card",
+        "ref_column": "id"
+      },
+      {
+        "column": "result_id",
+        "ref_table": "payment_result",
+        "ref_column": "id"
+      },
+      {
+        "column": "method_id",
+        "ref_table": "payment_method",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "payment_authorization": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "payment_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "date",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "processor": {
+        "type": "character varying(40)",
+        "null_false": true
+      },
+      "code1": {
+        "type": "character varying(40)",
+        "null_false": true
+      },
+      "code2": {
+        "type": "character varying(40)",
+        "null_false": false
+      },
+      "code3": {
+        "type": "character varying(40)",
+        "null_false": false
+      },
+      "approval_code": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "avs": {
+        "type": "character varying(20)",
+        "null_false": false
+      },
+      "transaction_id": {
+        "type": "character varying(40)",
+        "null_false": false
+      },
+      "md5": {
+        "type": "character varying(100)",
+        "null_false": false
+      },
+      "card_code": {
+        "type": "character varying(100)",
+        "null_false": false
+      },
+      "response_message": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "payment"
+    ],
+    "fk_columns": [
+      {
+        "column": "payment_id",
+        "ref_table": "payment",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "payment_info_cheque": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "payment_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "cheque_date": {
+        "type": "date",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "bank": {
+        "type": "character varying(50)",
+        "null_false": false
+      },
+      "cheque_number": {
+        "type": "character varying(50)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "payment"
+    ],
+    "fk_columns": [
+      {
+        "column": "payment_id",
+        "ref_table": "payment",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "payment_invoice": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "payment_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "invoice_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "amount": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "invoice",
+      "payment"
+    ],
+    "fk_columns": [
+      {
+        "column": "invoice_id",
+        "ref_table": "invoice",
+        "ref_column": "id"
+      },
+      {
+        "column": "payment_id",
+        "ref_table": "payment",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "payment_method": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "payment_result": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "period_unit": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "permission": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "foreign_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "permission_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "type_id",
+        "ref_table": "permission_type",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "permission_role_map": {
+    "pk": null,
+    "columns": {
+      "permission_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "role_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "permission",
+      "role"
+    ],
+    "fk_columns": [
+      {
+        "column": "role_id",
+        "ref_table": "role",
+        "ref_column": "id"
+      },
+      {
+        "column": "permission_id",
+        "ref_table": "permission",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "permission_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "description": {
+        "type": "character varying(30)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "permission_user": {
+    "pk": "id",
+    "columns": {
+      "permission_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "is_grant": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "base_user",
+      "permission"
+    ],
+    "fk_columns": [
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      },
+      {
+        "column": "permission_id",
+        "ref_table": "permission",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "pluggable_task": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "entity_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "processing_order": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "notes": {
+        "type": "character varying(1000)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "entity",
+      "pluggable_task_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "type_id",
+        "ref_table": "pluggable_task_type",
+        "ref_column": "id"
+      },
+      {
+        "column": "entity_id",
+        "ref_table": "entity",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "pluggable_task_parameter": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "task_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "int_value": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(50)",
+        "null_false": true
+      },
+      "str_value": {
+        "type": "character varying(500)",
+        "null_false": false
+      },
+      "float_value": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "pluggable_task"
+    ],
+    "fk_columns": [
+      {
+        "column": "task_id",
+        "ref_table": "pluggable_task",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "pluggable_task_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "category_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "min_parameters": {
+        "type": "integer",
+        "null_false": true
+      },
+      "class_name": {
+        "type": "character varying(200)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "pluggable_task_type_category"
+    ],
+    "fk_columns": [
+      {
+        "column": "category_id",
+        "ref_table": "pluggable_task_type_category",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "pluggable_task_type_category": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "interface_name": {
+        "type": "character varying(200)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "preference": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "table_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "foreign_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "value": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "jbilling_table",
+      "preference_type"
+    ],
+    "fk_columns": [
+      {
+        "column": "type_id",
+        "ref_table": "preference_type",
+        "ref_column": "id"
+      },
+      {
+        "column": "table_id",
+        "ref_table": "jbilling_table",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "preference_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "def_value": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "process_run": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "process_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "run_date": {
+        "type": "date",
+        "null_false": true
+      },
+      "started": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "finished": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "payment_finished": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "invoices_generated": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "status_id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "billing_process",
+      "generic_status"
+    ],
+    "fk_columns": [
+      {
+        "column": "process_id",
+        "ref_table": "billing_process",
+        "ref_column": "id"
+      },
+      {
+        "column": "status_id",
+        "ref_table": "generic_status",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "process_run_total": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "process_run_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "total_invoiced": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "total_paid": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      },
+      "total_not_paid": {
+        "type": "numeric(22,10)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "currency",
+      "process_run"
+    ],
+    "fk_columns": [
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "process_run_id",
+        "ref_table": "process_run",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "process_run_total_pm": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "process_run_total_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "payment_method_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "total": {
+        "type": "numeric(22,10)",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "payment_method"
+    ],
+    "fk_columns": [
+      {
+        "column": "payment_method_id",
+        "ref_table": "payment_method",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "process_run_user": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "process_run_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "status": {
+        "type": "integer",
+        "null_false": true
+      },
+      "created": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [
+      "base_user",
+      "process_run"
+    ],
+    "fk_columns": [
+      {
+        "column": "process_run_id",
+        "ref_table": "process_run",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "promotion": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "item_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "once": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "since": {
+        "type": "date",
+        "null_false": false
+      },
+      "until": {
+        "type": "date",
+        "null_false": false
+      },
+      "code": {
+        "type": "character varying(50)",
+        "null_false": true
+      },
+      "notes": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "item"
+    ],
+    "fk_columns": [
+      {
+        "column": "item_id",
+        "ref_table": "item",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "promotion_user_map": {
+    "pk": null,
+    "columns": {
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "promotion_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user",
+      "promotion"
+    ],
+    "fk_columns": [
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      },
+      {
+        "column": "promotion_id",
+        "ref_table": "promotion",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "purchase_order": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "period_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "billing_type_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "active_since": {
+        "type": "date",
+        "null_false": false
+      },
+      "active_until": {
+        "type": "date",
+        "null_false": false
+      },
+      "cycle_start": {
+        "type": "date",
+        "null_false": false
+      },
+      "create_datetime": {
+        "type": "timestamp without time zone",
+        "null_false": true
+      },
+      "next_billable_day": {
+        "type": "date",
+        "null_false": false
+      },
+      "created_by": {
+        "type": "integer",
+        "null_false": false
+      },
+      "status_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "currency_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "deleted": {
+        "type": "smallint",
+        "null_false": true
+      },
+      "notify": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "last_notified": {
+        "type": "timestamp without time zone",
+        "null_false": false
+      },
+      "notification_step": {
+        "type": "integer",
+        "null_false": false
+      },
+      "due_date_unit_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "due_date_value": {
+        "type": "integer",
+        "null_false": false
+      },
+      "df_fm": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "anticipate_periods": {
+        "type": "integer",
+        "null_false": false
+      },
+      "own_invoice": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "notes_in_invoice": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "is_current": {
+        "type": "smallint",
+        "null_false": false
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "notes": {
+        "type": "character varying(200)",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user",
+      "currency",
+      "order_billing_type",
+      "order_period"
+    ],
+    "fk_columns": [
+      {
+        "column": "currency_id",
+        "ref_table": "currency",
+        "ref_column": "id"
+      },
+      {
+        "column": "billing_type_id",
+        "ref_table": "order_billing_type",
+        "ref_column": "id"
+      },
+      {
+        "column": "period_id",
+        "ref_table": "order_period",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      },
+      {
+        "column": "created_by",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  },
+  "recent_item": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "object_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "version": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type": {
+        "type": "character varying(255)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "report": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "type_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "file_name": {
+        "type": "character varying(500)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "report_parameter": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "report_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "dtype": {
+        "type": "character varying(10)",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "report_type": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "optlock": {
+        "type": "integer",
+        "null_false": true
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "role": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "shortcut": {
+    "pk": "id",
+    "columns": {
+      "id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "user_id": {
+        "type": "integer",
+        "null_false": true
+      },
+      "object_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "version": {
+        "type": "integer",
+        "null_false": true
+      },
+      "controller": {
+        "type": "character varying(255)",
+        "null_false": true
+      },
+      "action": {
+        "type": "character varying(255)",
+        "null_false": false
+      },
+      "name": {
+        "type": "character varying(255)",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "user_credit_card_map": {
+    "pk": null,
+    "columns": {
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "credit_card_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [],
+    "fk_columns": [],
+    "indexes": [],
+    "checks": []
+  },
+  "user_role_map": {
+    "pk": null,
+    "columns": {
+      "user_id": {
+        "type": "integer",
+        "null_false": false
+      },
+      "role_id": {
+        "type": "integer",
+        "null_false": false
+      }
+    },
+    "fks": [
+      "base_user",
+      "role"
+    ],
+    "fk_columns": [
+      {
+        "column": "role_id",
+        "ref_table": "role",
+        "ref_column": "id"
+      },
+      {
+        "column": "user_id",
+        "ref_table": "base_user",
+        "ref_column": "id"
+      }
+    ],
+    "indexes": [],
+    "checks": []
+  }
+}

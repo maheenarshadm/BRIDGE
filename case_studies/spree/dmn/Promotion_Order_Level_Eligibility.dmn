@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/"
+             id="Promotion_Order_Level_Eligibility" name="Promotion_Order_Level_Eligibility" namespace="https://spree-dmn.research/case-study">
+    <decision id="Decision_EffectiveMinimumAmountThreshold" name="Effective Minimum Amount Threshold">
+      <variable name="effectiveMinThreshold" typeRef="number"/>
+      <literalExpression id="le_Decision_EffectiveMinimumAmountThreshold" typeRef="number">
+        <text>if operatorMin = "gte" then amountMin else amountMin + 0.01</text>
+      </literalExpression>
+    </decision>
+    <decision id="Decision_EffectiveMaximumAmountThreshold" name="Effective Maximum Amount Threshold">
+      <variable name="effectiveMaxThreshold" typeRef="number"/>
+      <literalExpression id="le_Decision_EffectiveMaximumAmountThreshold" typeRef="number">
+        <text>if operatorMax = "lte" then amountMax else amountMax - 0.01</text>
+      </literalExpression>
+    </decision>
+    <decision id="Decision_ItemTotalEligibility" name="Promotion Item Total Eligibility">
+      <informationRequirement id="ir_Decision_ItemTotalEligibility_Decision_EffectiveMinimumAmountThreshold"><requiredDecision href="#Decision_EffectiveMinimumAmountThreshold"/></informationRequirement>
+      <informationRequirement id="ir_Decision_ItemTotalEligibility_Decision_EffectiveMaximumAmountThreshold"><requiredDecision href="#Decision_EffectiveMaximumAmountThreshold"/></informationRequirement>
+      <decisionTable id="dt_Decision_ItemTotalEligibility" hitPolicy="UNIQUE">
+        <input id="in_Decision_ItemTotalEligibility_0" label="Order item total">
+          <inputExpression id="ie_Decision_ItemTotalEligibility_0" typeRef="number"><text>itemTotal</text></inputExpression>
+        </input>
+        <input id="in_Decision_ItemTotalEligibility_1" label="Maximum amount configured?">
+          <inputExpression id="ie_Decision_ItemTotalEligibility_1" typeRef="boolean"><text>amountMaxSet</text></inputExpression>
+        </input>
+        <output id="out_Decision_ItemTotalEligibility_0" label="Item-total rule eligible" name="itemTotalEligible" typeRef="boolean"/>
+        <rule id="Decision_ItemTotalEligibility_rule_1">
+          <inputEntry><text>&gt;= effectiveMinThreshold</text></inputEntry>
+          <inputEntry><text>false</text></inputEntry>
+          <outputEntry><text>true</text></outputEntry>
+          <annotationEntry><text>no maximum configured; meets the resolved minimum</text></annotationEntry>
+        </rule>
+        <rule id="Decision_ItemTotalEligibility_rule_2">
+          <inputEntry><text>&lt; effectiveMinThreshold</text></inputEntry>
+          <inputEntry><text>false</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+          <annotationEntry><text>no maximum configured; fails the resolved minimum</text></annotationEntry>
+        </rule>
+        <rule id="Decision_ItemTotalEligibility_rule_3">
+          <inputEntry><text>[effectiveMinThreshold..effectiveMaxThreshold]</text></inputEntry>
+          <inputEntry><text>true</text></inputEntry>
+          <outputEntry><text>true</text></outputEntry>
+          <annotationEntry><text>maximum configured; within the resolved [min,max] range</text></annotationEntry>
+        </rule>
+        <rule id="Decision_ItemTotalEligibility_rule_4">
+          <inputEntry><text>not([effectiveMinThreshold..effectiveMaxThreshold])</text></inputEntry>
+          <inputEntry><text>true</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+          <annotationEntry><text>maximum configured; outside the resolved [min,max] range</text></annotationEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_PromotionTemporalAvailability" name="Promotion Temporal Availability">
+      <decisionTable id="dt_Decision_PromotionTemporalAvailability" hitPolicy="FIRST">
+        <input id="in_Decision_PromotionTemporalAvailability_0" label="Time of eligibility check">
+          <inputExpression id="ie_Decision_PromotionTemporalAvailability_0" typeRef="date and time"><text>evaluationTime</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionTemporalAvailability_1" label="Promotion starts_at">
+          <inputExpression id="ie_Decision_PromotionTemporalAvailability_1" typeRef="date and time"><text>startsAt</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionTemporalAvailability_2" label="expires_at configured?">
+          <inputExpression id="ie_Decision_PromotionTemporalAvailability_2" typeRef="boolean"><text>expiresAtSet</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionTemporalAvailability_3" label="Promotion expires_at">
+          <inputExpression id="ie_Decision_PromotionTemporalAvailability_3" typeRef="date and time"><text>expiresAt</text></inputExpression>
+        </input>
+        <output id="out_Decision_PromotionTemporalAvailability_0" label="Availability status" name="availabilityStatus" typeRef="string"/>
+        <rule id="Decision_PromotionTemporalAvailability_rule_1">
+          <inputEntry><text>&lt; startsAt</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"NOT_YET_STARTED"</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionTemporalAvailability_rule_2">
+          <inputEntry><text>&gt; expiresAt</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>true</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"EXPIRED"</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionTemporalAvailability_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>"ACTIVE"</text></outputEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_PromotionUsageLimitExceeded" name="Promotion Usage Limit Exceeded">
+      <decisionTable id="dt_Decision_PromotionUsageLimitExceeded" hitPolicy="FIRST">
+        <input id="in_Decision_PromotionUsageLimitExceeded_0" label="usage_limit configured?">
+          <inputExpression id="ie_Decision_PromotionUsageLimitExceeded_0" typeRef="boolean"><text>usageLimitSet</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionUsageLimitExceeded_1" label="Configured usage limit">
+          <inputExpression id="ie_Decision_PromotionUsageLimitExceeded_1" typeRef="number"><text>usageLimit</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionUsageLimitExceeded_2" label="Credits already used (adjusted)">
+          <inputExpression id="ie_Decision_PromotionUsageLimitExceeded_2" typeRef="number"><text>adjustedCreditsCount</text></inputExpression>
+        </input>
+        <output id="out_Decision_PromotionUsageLimitExceeded_0" label="Usage limit exceeded" name="usageLimitExceeded" typeRef="boolean"/>
+        <rule id="Decision_PromotionUsageLimitExceeded_rule_1">
+          <inputEntry><text>false</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionUsageLimitExceeded_rule_2">
+          <inputEntry><text>true</text></inputEntry>
+          <inputEntry><text>&lt;= 0</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionUsageLimitExceeded_rule_3">
+          <inputEntry><text>true</text></inputEntry>
+          <inputEntry><text>&gt; 0</text></inputEntry>
+          <inputEntry><text>&gt;= usageLimit</text></inputEntry>
+          <outputEntry><text>true</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionUsageLimitExceeded_rule_4">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_EffectiveMinimumAmountThreshold"><dc:Bounds x="100" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_EffectiveMaximumAmountThreshold"><dc:Bounds x="320" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_ItemTotalEligibility"><dc:Bounds x="540" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PromotionTemporalAvailability"><dc:Bounds x="760" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PromotionUsageLimitExceeded"><dc:Bounds x="980" y="100" width="180" height="80"/></dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

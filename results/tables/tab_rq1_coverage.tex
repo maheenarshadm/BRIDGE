@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Mean Verified Rule Coverage (\%) over 30 Runs - RQ1, RQ2}
+\label{tab:rq1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|cccc|cccc|cccc|}
+\hline
+\multirow{2}{*}{\textbf{Case study}} & \multicolumn{4}{c|}{\textbf{Budget $1B$}} & \multicolumn{4}{c|}{\textbf{Budget $5B$}} & \multicolumn{4}{c|}{\textbf{Budget $10B$}} \\
+\cline{2-13}
+ & BRIDGE & GM & GS & SR & BRIDGE & GM & GS & SR & BRIDGE & GM & GS & SR \\
+\hline
+C02 jBilling & \textbf{90.00} & 85.00 & 85.00 & 75.00 & \textbf{90.00} & 85.00 & 85.00 & 75.00 & \textbf{90.00} & 85.00 & 85.00 & 75.00 \\
+C03 OpenMRS & \textbf{96.36} & 95.88 & \textbf{96.36} & 52.85$^{\dagger}$ & \textbf{96.36} & \textbf{96.36} & \textbf{96.36} & 53.35$^{\dagger}$ & \textbf{96.36} & \textbf{96.36} & \textbf{96.36} & 54.04$^{\dagger}$ \\
+C04 Spree & \textbf{99.05} & 76.19 & 76.19 & 76.19 & \textbf{98.89} & 76.19 & 76.19 & 76.19 & \textbf{98.57} & 76.19 & 76.19 & 76.19 \\
+\hline
+\end{tabular}}
+\\[2pt]
+\footnotesize{Best value per case study and budget in bold. $^{\dagger}$ Based on 29 runs for SR in OpenMRS.}
+\end{table*}

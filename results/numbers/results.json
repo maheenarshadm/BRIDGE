@@ -1,0 +1,2164 @@
+{
+ "n_runs": {
+  "jBilling|BRIDGE|1B": 30,
+  "jBilling|GM|1B": 30,
+  "jBilling|GS|1B": 30,
+  "jBilling|SR|1B": 30,
+  "jBilling|BRIDGE|5B": 30,
+  "jBilling|GM|5B": 30,
+  "jBilling|GS|5B": 30,
+  "jBilling|SR|5B": 30,
+  "jBilling|BRIDGE|10B": 30,
+  "jBilling|GM|10B": 30,
+  "jBilling|GS|10B": 30,
+  "jBilling|SR|10B": 30,
+  "OpenMRS|BRIDGE|1B": 30,
+  "OpenMRS|GM|1B": 30,
+  "OpenMRS|GS|1B": 30,
+  "OpenMRS|SR|1B": 29,
+  "OpenMRS|BRIDGE|5B": 30,
+  "OpenMRS|GM|5B": 30,
+  "OpenMRS|GS|5B": 30,
+  "OpenMRS|SR|5B": 29,
+  "OpenMRS|BRIDGE|10B": 30,
+  "OpenMRS|GM|10B": 30,
+  "OpenMRS|GS|10B": 30,
+  "OpenMRS|SR|10B": 29,
+  "Spree|BRIDGE|1B": 30,
+  "Spree|GM|1B": 30,
+  "Spree|GS|1B": 30,
+  "Spree|SR|1B": 30,
+  "Spree|BRIDGE|5B": 30,
+  "Spree|GM|5B": 30,
+  "Spree|GS|5B": 30,
+  "Spree|SR|5B": 30,
+  "Spree|BRIDGE|10B": 30,
+  "Spree|GM|10B": 30,
+  "Spree|GS|10B": 30,
+  "Spree|SR|10B": 30
+ },
+ "verified": {
+  "jBilling|BRIDGE|1B": {
+   "mean": 18,
+   "pct": 90.0,
+   "min": 18,
+   "max": 18,
+   "n": 30
+  },
+  "jBilling|GM|1B": {
+   "mean": 17,
+   "pct": 85.0,
+   "min": 17,
+   "max": 17,
+   "n": 30
+  },
+  "jBilling|GS|1B": {
+   "mean": 17,
+   "pct": 85.0,
+   "min": 17,
+   "max": 17,
+   "n": 30
+  },
+  "jBilling|SR|1B": {
+   "mean": 15,
+   "pct": 75.0,
+   "min": 15,
+   "max": 15,
+   "n": 30
+  },
+  "jBilling|BRIDGE|5B": {
+   "mean": 18,
+   "pct": 90.0,
+   "min": 18,
+   "max": 18,
+   "n": 30
+  },
+  "jBilling|GM|5B": {
+   "mean": 17,
+   "pct": 85.0,
+   "min": 17,
+   "max": 17,
+   "n": 30
+  },
+  "jBilling|GS|5B": {
+   "mean": 17,
+   "pct": 85.0,
+   "min": 17,
+   "max": 17,
+   "n": 30
+  },
+  "jBilling|SR|5B": {
+   "mean": 15,
+   "pct": 75.0,
+   "min": 15,
+   "max": 15,
+   "n": 30
+  },
+  "jBilling|BRIDGE|10B": {
+   "mean": 18,
+   "pct": 90.0,
+   "min": 18,
+   "max": 18,
+   "n": 30
+  },
+  "jBilling|GM|10B": {
+   "mean": 17,
+   "pct": 85.0,
+   "min": 17,
+   "max": 17,
+   "n": 30
+  },
+  "jBilling|GS|10B": {
+   "mean": 17,
+   "pct": 85.0,
+   "min": 17,
+   "max": 17,
+   "n": 30
+  },
+  "jBilling|SR|10B": {
+   "mean": 15,
+   "pct": 75.0,
+   "min": 15,
+   "max": 15,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|1B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|GM|1B": {
+   "mean": 52.733333333333334,
+   "pct": 95.87878787878788,
+   "min": 52,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|GS|1B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|SR|1B": {
+   "mean": 29.06896551724138,
+   "pct": 52.85266457680251,
+   "min": 29,
+   "max": 30,
+   "n": 29
+  },
+  "OpenMRS|BRIDGE|5B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|GM|5B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|GS|5B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|SR|5B": {
+   "mean": 29.344827586206897,
+   "pct": 53.35423197492163,
+   "min": 29,
+   "max": 31,
+   "n": 29
+  },
+  "OpenMRS|BRIDGE|10B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|GM|10B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|GS|10B": {
+   "mean": 53,
+   "pct": 96.36363636363636,
+   "min": 53,
+   "max": 53,
+   "n": 30
+  },
+  "OpenMRS|SR|10B": {
+   "mean": 29.724137931034484,
+   "pct": 54.043887147335425,
+   "min": 29,
+   "max": 31,
+   "n": 29
+  },
+  "Spree|BRIDGE|1B": {
+   "mean": 20.8,
+   "pct": 99.04761904761905,
+   "min": 20,
+   "max": 21,
+   "n": 30
+  },
+  "Spree|GM|1B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|GS|1B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|SR|1B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|BRIDGE|5B": {
+   "mean": 20.766666666666666,
+   "pct": 98.88888888888889,
+   "min": 20,
+   "max": 21,
+   "n": 30
+  },
+  "Spree|GM|5B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|GS|5B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|SR|5B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|BRIDGE|10B": {
+   "mean": 20.7,
+   "pct": 98.57142857142857,
+   "min": 20,
+   "max": 21,
+   "n": 30
+  },
+  "Spree|GM|10B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|GS|10B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  },
+  "Spree|SR|10B": {
+   "mean": 16,
+   "pct": 76.19047619047619,
+   "min": 16,
+   "max": 16,
+   "n": 30
+  }
+ },
+ "suite": {
+  "jBilling|BRIDGE|1B|archive": {
+   "mean": 2.5,
+   "n": 30
+  },
+  "jBilling|BRIDGE|1B|final": {
+   "mean": 1,
+   "n": 30
+  },
+  "jBilling|BRIDGE|1B|union": {
+   "mean": 1.6666666666666667,
+   "n": 30
+  },
+  "jBilling|BRIDGE|5B|archive": {
+   "mean": 2.2333333333333334,
+   "n": 30
+  },
+  "jBilling|BRIDGE|5B|final": {
+   "mean": 1,
+   "n": 30
+  },
+  "jBilling|BRIDGE|5B|union": {
+   "mean": 2,
+   "n": 30
+  },
+  "jBilling|BRIDGE|10B|archive": {
+   "mean": 2.2333333333333334,
+   "n": 30
+  },
+  "jBilling|BRIDGE|10B|final": {
+   "mean": 1,
+   "n": 30
+  },
+  "jBilling|BRIDGE|10B|union": {
+   "mean": 2,
+   "n": 30
+  },
+  "jBilling|GM|1B|archive": {
+   "mean": 1.9333333333333333,
+   "n": 30
+  },
+  "jBilling|GM|1B|final": {
+   "mean": 1.6,
+   "n": 30
+  },
+  "jBilling|GM|1B|union": {
+   "mean": 1.5333333333333334,
+   "n": 30
+  },
+  "jBilling|GM|5B|archive": {
+   "mean": 1.9333333333333333,
+   "n": 30
+  },
+  "jBilling|GM|5B|final": {
+   "mean": 1.5,
+   "n": 30
+  },
+  "jBilling|GM|5B|union": {
+   "mean": 1.4666666666666666,
+   "n": 30
+  },
+  "jBilling|GM|10B|archive": {
+   "mean": 1.8666666666666667,
+   "n": 30
+  },
+  "jBilling|GM|10B|final": {
+   "mean": 1.5666666666666667,
+   "n": 30
+  },
+  "jBilling|GM|10B|union": {
+   "mean": 1.4666666666666666,
+   "n": 30
+  },
+  "jBilling|GS|1B|archive": {
+   "mean": 1.7333333333333334,
+   "n": 30
+  },
+  "jBilling|GS|1B|union": {
+   "mean": 1.7333333333333334,
+   "n": 30
+  },
+  "jBilling|GS|5B|archive": {
+   "mean": 1.6666666666666667,
+   "n": 30
+  },
+  "jBilling|GS|5B|union": {
+   "mean": 1.6666666666666667,
+   "n": 30
+  },
+  "jBilling|GS|10B|archive": {
+   "mean": 1.6333333333333333,
+   "n": 30
+  },
+  "jBilling|GS|10B|union": {
+   "mean": 1.6333333333333333,
+   "n": 30
+  },
+  "jBilling|SR|1B|union": {
+   "mean": 2.6333333333333333,
+   "n": 30
+  },
+  "jBilling|SR|5B|union": {
+   "mean": 2.6333333333333333,
+   "n": 30
+  },
+  "jBilling|SR|10B|union": {
+   "mean": 2.6333333333333333,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|1B|archive": {
+   "mean": 14.5,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|1B|final": {
+   "mean": 7.9,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|1B|union": {
+   "mean": 7.666666666666667,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|5B|archive": {
+   "mean": 14.766666666666667,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|5B|final": {
+   "mean": 3.8333333333333335,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|5B|union": {
+   "mean": 3.8,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|10B|archive": {
+   "mean": 14.5,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|10B|final": {
+   "mean": 2.6333333333333333,
+   "n": 30
+  },
+  "OpenMRS|BRIDGE|10B|union": {
+   "mean": 2.6333333333333333,
+   "n": 30
+  },
+  "OpenMRS|GM|1B|archive": {
+   "mean": 5.733333333333333,
+   "n": 30
+  },
+  "OpenMRS|GM|1B|final": {
+   "mean": 3.566666666666667,
+   "n": 30
+  },
+  "OpenMRS|GM|1B|union": {
+   "mean": 3.6666666666666665,
+   "n": 30
+  },
+  "OpenMRS|GM|5B|archive": {
+   "mean": 5.3,
+   "n": 30
+  },
+  "OpenMRS|GM|5B|final": {
+   "mean": 3.3666666666666667,
+   "n": 30
+  },
+  "OpenMRS|GM|5B|union": {
+   "mean": 3.3666666666666667,
+   "n": 30
+  },
+  "OpenMRS|GM|10B|archive": {
+   "mean": 5.6,
+   "n": 30
+  },
+  "OpenMRS|GM|10B|final": {
+   "mean": 3.3,
+   "n": 30
+  },
+  "OpenMRS|GM|10B|union": {
+   "mean": 3.5,
+   "n": 30
+  },
+  "OpenMRS|GS|1B|archive": {
+   "mean": 4.833333333333333,
+   "n": 30
+  },
+  "OpenMRS|GS|1B|union": {
+   "mean": 4.833333333333333,
+   "n": 30
+  },
+  "OpenMRS|GS|5B|archive": {
+   "mean": 4.866666666666666,
+   "n": 30
+  },
+  "OpenMRS|GS|5B|union": {
+   "mean": 4.866666666666666,
+   "n": 30
+  },
+  "OpenMRS|GS|10B|archive": {
+   "mean": 5.133333333333334,
+   "n": 30
+  },
+  "OpenMRS|GS|10B|union": {
+   "mean": 5.133333333333334,
+   "n": 30
+  },
+  "OpenMRS|SR|1B|union": {
+   "mean": 6,
+   "n": 29
+  },
+  "OpenMRS|SR|5B|union": {
+   "mean": 6.068965517241379,
+   "n": 29
+  },
+  "OpenMRS|SR|10B|union": {
+   "mean": 6.310344827586207,
+   "n": 29
+  },
+  "Spree|BRIDGE|1B|archive": {
+   "mean": 5,
+   "n": 30
+  },
+  "Spree|BRIDGE|1B|final": {
+   "mean": 1.0666666666666667,
+   "n": 30
+  },
+  "Spree|BRIDGE|1B|union": {
+   "mean": 1.3333333333333333,
+   "n": 30
+  },
+  "Spree|BRIDGE|5B|archive": {
+   "mean": 5.433333333333334,
+   "n": 30
+  },
+  "Spree|BRIDGE|5B|final": {
+   "mean": 1.0333333333333334,
+   "n": 30
+  },
+  "Spree|BRIDGE|5B|union": {
+   "mean": 1.5,
+   "n": 30
+  },
+  "Spree|BRIDGE|10B|archive": {
+   "mean": 5.133333333333334,
+   "n": 30
+  },
+  "Spree|BRIDGE|10B|final": {
+   "mean": 1,
+   "n": 30
+  },
+  "Spree|BRIDGE|10B|union": {
+   "mean": 1.3333333333333333,
+   "n": 30
+  },
+  "Spree|GM|1B|archive": {
+   "mean": 1.5333333333333334,
+   "n": 30
+  },
+  "Spree|GM|1B|final": {
+   "mean": 1.2666666666666666,
+   "n": 30
+  },
+  "Spree|GM|1B|union": {
+   "mean": 1.1333333333333333,
+   "n": 30
+  },
+  "Spree|GM|5B|archive": {
+   "mean": 1.5666666666666667,
+   "n": 30
+  },
+  "Spree|GM|5B|final": {
+   "mean": 1.4,
+   "n": 30
+  },
+  "Spree|GM|5B|union": {
+   "mean": 1.2333333333333334,
+   "n": 30
+  },
+  "Spree|GM|10B|archive": {
+   "mean": 1.6,
+   "n": 30
+  },
+  "Spree|GM|10B|final": {
+   "mean": 1.4,
+   "n": 30
+  },
+  "Spree|GM|10B|union": {
+   "mean": 1.2666666666666666,
+   "n": 30
+  },
+  "Spree|GS|1B|archive": {
+   "mean": 1.8333333333333333,
+   "n": 30
+  },
+  "Spree|GS|1B|union": {
+   "mean": 1.8333333333333333,
+   "n": 30
+  },
+  "Spree|GS|5B|archive": {
+   "mean": 1.9333333333333333,
+   "n": 30
+  },
+  "Spree|GS|5B|union": {
+   "mean": 1.9333333333333333,
+   "n": 30
+  },
+  "Spree|GS|10B|archive": {
+   "mean": 1.8666666666666667,
+   "n": 30
+  },
+  "Spree|GS|10B|union": {
+   "mean": 1.8666666666666667,
+   "n": 30
+  },
+  "Spree|SR|1B|union": {
+   "mean": 3.033333333333333,
+   "n": 30
+  },
+  "Spree|SR|5B|union": {
+   "mean": 3.033333333333333,
+   "n": 30
+  },
+  "Spree|SR|10B|union": {
+   "mean": 3.033333333333333,
+   "n": 30
+  }
+ },
+ "groups": {
+  "jBilling": {
+   "trivial": [
+    "Decision_AgeingStatusChangeOrderAction_Rule_4",
+    "Decision_AgeingStepAdvancement_Rule_1",
+    "Decision_AgeingStepAdvancement_Rule_2",
+    "Decision_AgeingStepConfigValidation_Rule_1",
+    "Decision_BlacklistFilterEnabled_Rule_1",
+    "Decision_CurrencyExchangeRateSource_Rule_2",
+    "Decision_CurrencyExchangeRateSource_Rule_3",
+    "Decision_CycleStartSource_Rule_1",
+    "Decision_CycleStartSource_Rule_2",
+    "Decision_CycleStartSource_Rule_3",
+    "Decision_InvoiceOverdue_Rule_1",
+    "Decision_OrderPeriodAlreadyInvoiced_Rule_1",
+    "Decision_OrderPeriodAlreadyInvoiced_Rule_2",
+    "Decision_OrderPeriodAlreadyInvoiced_Rule_4",
+    "Decision_TaxCalculationMode_Rule_1",
+    "Decision_TaxCalculationMode_Rule_2",
+    "Decision_TaxCalculationNeeded_Rule_2"
+   ],
+   "unreached": [
+    "Decision_AgeingStepConfigValidation_Rule_2",
+    "Decision_AgeingStepConfigValidation_Rule_5"
+   ],
+   "nontrivial": [
+    "Decision_InvoiceOverdue_Rule_2"
+   ]
+  },
+  "OpenMRS": {
+   "trivial": [
+    "Decision_BirthdateValidity_Rule_1",
+    "Decision_ConceptFullySpecifiedNamePresenceRequirement_Rule_1",
+    "Decision_ConceptFullySpecifiedNamePresenceRequirement_Rule_2",
+    "Decision_ConceptFullySpecifiedNameUniquenessPerLocale_Rule_1",
+    "Decision_ConceptFullySpecifiedNameUniquenessPerLocale_Rule_2",
+    "Decision_ConceptLocalePreferredNameUniqueness_Rule_1",
+    "Decision_ConceptLocalePreferredNameUniqueness_Rule_2",
+    "Decision_ConceptPreferredNameValidity_Rule_1",
+    "Decision_ConceptPreferredNameValidity_Rule_2",
+    "Decision_ConceptPreferredNameValidity_Rule_3",
+    "Decision_ConceptPreferredNameValidity_Rule_4",
+    "Decision_ConceptPreferredNameValidity_Rule_5",
+    "Decision_ConceptShortNameUniquenessPerLocale_Rule_1",
+    "Decision_ConceptShortNameUniquenessPerLocale_Rule_2",
+    "Decision_DeathRecordConsistency_Rule_1",
+    "Decision_DeathRecordConsistency_Rule_2",
+    "Decision_DeathRecordConsistency_Rule_3",
+    "Decision_DeathRecordConsistency_Rule_4",
+    "Decision_DeathRecordConsistency_Rule_5",
+    "Decision_IdentifierFormatAndCheckDigitValidity_Rule_2",
+    "Decision_IdentifierFormatAndCheckDigitValidity_Rule_3",
+    "Decision_IdentifierFormatAndCheckDigitValidity_Rule_4",
+    "Decision_IdentifierLocationRequirement_Rule_1",
+    "Decision_IdentifierLocationRequirement_Rule_2",
+    "Decision_IdentifierLocationRequirement_Rule_3",
+    "Decision_IdentifierUniquenessCheck_Rule_1",
+    "Decision_IdentifierUniquenessCheck_Rule_3",
+    "Decision_NumericAbsoluteRangeValidity_Rule_1",
+    "Decision_NumericAbsoluteRangeValidity_Rule_2",
+    "Decision_NumericAbsoluteRangeValidity_Rule_3",
+    "Decision_NumericInterpretationClassification_Rule_1",
+    "Decision_NumericInterpretationClassification_Rule_2",
+    "Decision_NumericInterpretationClassification_Rule_3",
+    "Decision_NumericInterpretationClassification_Rule_5",
+    "Decision_NumericPrecisionValidity_Rule_1",
+    "Decision_ObsValueRequiredByDatatype_Rule_1",
+    "Decision_ObsValueRequiredByDatatype_Rule_2",
+    "Decision_ObsValueRequiredByDatatype_Rule_3",
+    "Decision_ObsValueRequiredByDatatype_Rule_4",
+    "Decision_ObsValueRequiredByDatatype_Rule_5",
+    "Decision_OrderScheduledDateUrgencyConsistency_Rule_1",
+    "Decision_OrderScheduledDateUrgencyConsistency_Rule_2",
+    "Decision_OrderScheduledDateUrgencyConsistency_Rule_3",
+    "Decision_OrderScheduledDateUrgencyConsistency_Rule_4",
+    "Decision_PatientStateDateValidity_Rule_1",
+    "Decision_PatientStateDateValidity_Rule_2",
+    "Decision_PatientStateDateValidity_Rule_3",
+    "Decision_PatientStateDateValidity_Rule_4",
+    "Decision_PreferredIdentifierRequirement_Rule_1",
+    "Decision_PreferredIdentifierRequirement_Rule_2",
+    "Decision_PreferredIdentifierRequirement_Rule_3"
+   ],
+   "unreached": [
+    "Decision_IdentifierFormatAndCheckDigitValidity_Rule_1",
+    "Decision_IdentifierUniquenessCheck_Rule_2"
+   ],
+   "nontrivial": [
+    "Decision_NumericInterpretationClassification_Rule_4",
+    "Decision_ObsValueRequiredByDatatype_Rule_6"
+   ]
+  },
+  "Spree": {
+   "trivial": [
+    "Decision_FirstOrderPromotionEligibility_rule_1",
+    "Decision_FirstOrderPromotionEligibility_rule_2",
+    "Decision_FirstOrderPromotionEligibility_rule_3",
+    "Decision_OneUsePerUserEligibility_rule_1",
+    "Decision_OneUsePerUserEligibility_rule_2",
+    "Decision_OneUsePerUserEligibility_rule_3",
+    "Decision_PriceListAdjustmentTierSelection_rule_3",
+    "Decision_PromotionCustomerGroupEligibility_rule_1",
+    "Decision_PromotionCustomerGroupEligibility_rule_2",
+    "Decision_PromotionTemporalAvailability_rule_2",
+    "Decision_PromotionTemporalAvailability_rule_3",
+    "Decision_PromotionTieredPercentSelection_rule_3",
+    "Decision_PromotionUsageLimitExceeded_rule_1",
+    "Decision_PromotionUsageLimitExceeded_rule_2",
+    "Decision_PromotionUsageLimitExceeded_rule_3",
+    "Decision_PromotionUsageLimitExceeded_rule_4"
+   ],
+   "unreached": [],
+   "nontrivial": [
+    "Decision_PriceListAdjustmentTierSelection_rule_1",
+    "Decision_PriceListAdjustmentTierSelection_rule_2",
+    "Decision_PromotionTemporalAvailability_rule_1",
+    "Decision_PromotionTieredPercentSelection_rule_1",
+    "Decision_PromotionTieredPercentSelection_rule_2"
+   ]
+  }
+ },
+ "tests_verified": {
+  "jBilling|GM|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|GS|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|SR|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|GM|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|GS|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|SR|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|GM|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|GS|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "jBilling|SR|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.5167683754033922e-13
+  },
+  "OpenMRS|GM|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 0.6333333333333333,
+   "p_holm": 0.01618602097738028
+  },
+  "OpenMRS|GS|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|SR|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 6.032280647853459e-13
+  },
+  "OpenMRS|GM|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|GS|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|SR|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 3.515661344689943e-12
+  },
+  "OpenMRS|GM|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|GS|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|SR|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 6.1521891664690704e-12
+  },
+  "Spree|GM|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|GS|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|SR|1B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|GM|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|GS|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|SR|5B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|GM|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|GS|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  },
+  "Spree|SR|10B": {
+   "test": "Mann-Whitney U",
+   "A12": 1.0,
+   "p_holm": 1.393135473694606e-12
+  }
+ },
+ "sr_groups": {
+  "jBilling|1B": {
+   "trivial": 14,
+   "nontrivial": 1,
+   "unreached": 0
+  },
+  "jBilling|10B": {
+   "trivial": 14,
+   "nontrivial": 1,
+   "unreached": 0
+  },
+  "OpenMRS|1B": {
+   "trivial": 29.03448275862069,
+   "nontrivial": 0,
+   "unreached": 0.034482758620689655
+  },
+  "OpenMRS|10B": {
+   "trivial": 29.517241379310345,
+   "nontrivial": 0,
+   "unreached": 0.20689655172413793
+  },
+  "Spree|1B": {
+   "trivial": 13,
+   "nontrivial": 3,
+   "unreached": 0
+  },
+  "Spree|10B": {
+   "trivial": 13,
+   "nontrivial": 3,
+   "unreached": 0
+  }
+ },
+ "sr_beyond_bridge": [
+  "OpenMRS|Decision_IdentifierUniquenessCheck_Rule_2"
+ ],
+ "budget_effect": {
+  "jBilling|BRIDGE": {
+   "mean_1B": 18,
+   "mean_10B": 18,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "jBilling|GM": {
+   "mean_1B": 17,
+   "mean_10B": 17,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "jBilling|GS": {
+   "mean_1B": 17,
+   "mean_10B": 17,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "jBilling|SR": {
+   "mean_1B": 15,
+   "mean_10B": 15,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|BRIDGE": {
+   "mean_1B": 53,
+   "mean_10B": 53,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|GM": {
+   "mean_1B": 52.733333333333334,
+   "mean_10B": 53,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.6333333333333333,
+   "p_holm": 0.00809301048869014
+  },
+  "OpenMRS|GS": {
+   "mean_1B": 53,
+   "mean_10B": 53,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "OpenMRS|SR": {
+   "mean_1B": 29.06896551724138,
+   "mean_10B": 29.724137931034484,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.7633769322235434,
+   "p_holm": 0.00012065547955109906
+  },
+  "Spree|BRIDGE": {
+   "mean_1B": 20.8,
+   "mean_10B": 20.7,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.45,
+   "p_holm": 1.0
+  },
+  "Spree|GM": {
+   "mean_1B": 16,
+   "mean_10B": 16,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "Spree|GS": {
+   "mean_1B": 16,
+   "mean_10B": 16,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  },
+  "Spree|SR": {
+   "mean_1B": 16,
+   "mean_10B": 16,
+   "test": "Mann-Whitney U",
+   "A12_10B_gt_1B": 0.5,
+   "p_holm": 1.0
+  }
+ },
+ "curves": {
+  "x_percent_of_B": [
+   0,
+   1,
+   2,
+   5,
+   10,
+   15,
+   20,
+   30,
+   40,
+   50,
+   60,
+   70,
+   80,
+   90,
+   100
+  ],
+  "jBilling|BRIDGE": [
+   0.0,
+   40.99999999999999,
+   70.66666666666666,
+   82.83333333333334,
+   88.66666666666667,
+   90.16666666666667,
+   90.33333333333334,
+   90.66666666666666,
+   91.16666666666667,
+   92.16666666666666,
+   92.5,
+   93.00000000000001,
+   93.33333333333334,
+   93.33333333333334,
+   93.83333333333333
+  ],
+  "jBilling|GM": [
+   0.0,
+   44.333333333333336,
+   58.666666666666664,
+   74.5,
+   81.0,
+   83.16666666666666,
+   84.16666666666666,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0
+  ],
+  "jBilling|GS": [
+   0.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0,
+   85.0
+  ],
+  "jBilling|SR": [
+   0.0,
+   73.16666666666666,
+   74.83333333333334,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0,
+   75.0
+  ],
+  "OpenMRS|BRIDGE": [
+   0.0,
+   32.06060606060606,
+   48.54545454545455,
+   61.27272727272728,
+   76.96969696969698,
+   84.9090909090909,
+   90.12121212121212,
+   94.72727272727273,
+   95.87878787878788,
+   96.06060606060608,
+   96.24242424242424,
+   96.30303030303031,
+   96.30303030303031,
+   96.30303030303031,
+   96.30303030303031
+  ],
+  "OpenMRS|GM": [
+   0.0,
+   31.212121212121215,
+   41.151515151515156,
+   57.333333333333336,
+   68.30303030303031,
+   74.84848484848484,
+   79.03030303030303,
+   85.0909090909091,
+   88.30303030303031,
+   90.18181818181819,
+   91.27272727272727,
+   91.87878787878788,
+   92.42424242424244,
+   92.72727272727273,
+   93.0909090909091
+  ],
+  "OpenMRS|GS": [
+   0.0,
+   85.87878787878788,
+   86.96969696969698,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727,
+   87.27272727272727
+  ],
+  "OpenMRS|SR": [
+   0.0,
+   51.03448275862069,
+   52.35109717868338,
+   52.72727272727273,
+   52.789968652037615,
+   52.789968652037615,
+   52.789968652037615,
+   52.789968652037615,
+   52.789968652037615,
+   52.789968652037615,
+   52.789968652037615,
+   52.85266457680251,
+   52.85266457680251,
+   52.85266457680251,
+   52.85266457680251
+  ],
+  "Spree|BRIDGE": [
+   0.0,
+   29.365079365079367,
+   74.12698412698413,
+   88.88888888888889,
+   96.66666666666667,
+   99.36507936507935,
+   99.36507936507935,
+   99.52380952380952,
+   99.68253968253968,
+   99.84126984126983,
+   99.84126984126983,
+   99.84126984126983,
+   99.84126984126983,
+   99.84126984126983,
+   100.0
+  ],
+  "Spree|GM": [
+   0.0,
+   34.76190476190476,
+   51.42857142857143,
+   66.5079365079365,
+   72.85714285714286,
+   73.96825396825396,
+   74.92063492063491,
+   75.55555555555556,
+   75.71428571428571,
+   75.87301587301587,
+   76.03174603174604,
+   76.03174603174604,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619
+  ],
+  "Spree|GS": [
+   0.0,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619
+  ],
+  "Spree|SR": [
+   0.0,
+   75.07936507936509,
+   75.87301587301587,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619,
+   76.19047619047619
+  ]
+ },
+ "same_target": {
+  "jBilling|1B|GM": {
+   "bridge": 1.6666666666666667,
+   "baseline": 1.5333333333333334,
+   "target_coverage_pct": 85.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.6028240106625752
+  },
+  "jBilling|1B|GS": {
+   "bridge": 1.6666666666666667,
+   "baseline": 1.7333333333333334,
+   "target_coverage_pct": 85.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.6178585337664037
+  },
+  "jBilling|1B|SR": {
+   "bridge": 1.6666666666666667,
+   "baseline": 2.6333333333333333,
+   "target_coverage_pct": 75.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.00015832955027579931
+  },
+  "jBilling|5B|GM": {
+   "bridge": 1.9666666666666666,
+   "baseline": 1.4666666666666666,
+   "target_coverage_pct": 85.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.0015245877755284672
+  },
+  "jBilling|5B|GS": {
+   "bridge": 1.9666666666666666,
+   "baseline": 1.6666666666666667,
+   "target_coverage_pct": 85.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.010060309364838978
+  },
+  "jBilling|5B|SR": {
+   "bridge": 2,
+   "baseline": 2.6333333333333333,
+   "target_coverage_pct": 75.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.0011602144656770357
+  },
+  "jBilling|10B|GM": {
+   "bridge": 2,
+   "baseline": 1.4666666666666666,
+   "target_coverage_pct": 85.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.0005735631787826682
+  },
+  "jBilling|10B|GS": {
+   "bridge": 2,
+   "baseline": 1.6333333333333333,
+   "target_coverage_pct": 85.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.004357387875198345
+  },
+  "jBilling|10B|SR": {
+   "bridge": 2,
+   "baseline": 2.6333333333333333,
+   "target_coverage_pct": 75.0,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.0011602144656770357
+  },
+  "OpenMRS|1B|GM": {
+   "bridge": 7.533333333333333,
+   "baseline": 3.6666666666666665,
+   "target_coverage_pct": 95.87878787878788,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 1.0869283352746428e-05
+  },
+  "OpenMRS|1B|GS": {
+   "bridge": 7.666666666666667,
+   "baseline": 4.833333333333333,
+   "target_coverage_pct": 96.36363636363636,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 1.0869283352746428e-05
+  },
+  "OpenMRS|1B|SR": {
+   "bridge": 3.1379310344827585,
+   "baseline": 6,
+   "target_coverage_pct": 52.789968652037615,
+   "n": 29,
+   "test": "paired t-test",
+   "p_holm": 1.1072474347559903e-11
+  },
+  "OpenMRS|5B|GM": {
+   "bridge": 3.8,
+   "baseline": 3.3666666666666667,
+   "target_coverage_pct": 96.36363636363636,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.010242504531634838
+  },
+  "OpenMRS|5B|GS": {
+   "bridge": 3.8,
+   "baseline": 4.866666666666666,
+   "target_coverage_pct": 96.36363636363636,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 5.372625861405569e-05
+  },
+  "OpenMRS|5B|SR": {
+   "bridge": 2.103448275862069,
+   "baseline": 6.0344827586206895,
+   "target_coverage_pct": 53.22884012539185,
+   "n": 29,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 1.0869283352746428e-05
+  },
+  "OpenMRS|10B|GM": {
+   "bridge": 2.6333333333333333,
+   "baseline": 3.5,
+   "target_coverage_pct": 96.36363636363636,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 9.035767482676038e-05
+  },
+  "OpenMRS|10B|GS": {
+   "bridge": 2.6333333333333333,
+   "baseline": 5.133333333333334,
+   "target_coverage_pct": 96.36363636363636,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 1.0869283352746428e-05
+  },
+  "OpenMRS|10B|SR": {
+   "bridge": 2,
+   "baseline": 6.137931034482759,
+   "target_coverage_pct": 53.66771159874608,
+   "n": 29,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 1.0869283352746428e-05
+  },
+  "Spree|1B|GM": {
+   "bridge": 1,
+   "baseline": 1.1333333333333333,
+   "target_coverage_pct": 76.19047619047619,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.14372127645170324
+  },
+  "Spree|1B|GS": {
+   "bridge": 1,
+   "baseline": 1.8333333333333333,
+   "target_coverage_pct": 76.19047619047619,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 4.345963116822665e-06
+  },
+  "Spree|1B|SR": {
+   "bridge": 1.3,
+   "baseline": 3.033333333333333,
+   "target_coverage_pct": 75.23809523809524,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 2.0158073447667415e-05
+  },
+  "Spree|5B|GM": {
+   "bridge": 1.0666666666666667,
+   "baseline": 1.2333333333333334,
+   "target_coverage_pct": 76.19047619047619,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.14372127645170324
+  },
+  "Spree|5B|GS": {
+   "bridge": 1.0666666666666667,
+   "baseline": 1.9333333333333333,
+   "target_coverage_pct": 76.19047619047619,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 3.317494875856224e-06
+  },
+  "Spree|5B|SR": {
+   "bridge": 1.4666666666666666,
+   "baseline": 3.033333333333333,
+   "target_coverage_pct": 75.07936507936508,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 2.0158073447667415e-05
+  },
+  "Spree|10B|GM": {
+   "bridge": 1,
+   "baseline": 1.2666666666666666,
+   "target_coverage_pct": 76.19047619047619,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 0.01788623559628114
+  },
+  "Spree|10B|GS": {
+   "bridge": 1,
+   "baseline": 1.8666666666666667,
+   "target_coverage_pct": 76.19047619047619,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 3.317494875856224e-06
+  },
+  "Spree|10B|SR": {
+   "bridge": 1.3333333333333333,
+   "baseline": 3.033333333333333,
+   "target_coverage_pct": 74.76190476190476,
+   "n": 30,
+   "test": "Wilcoxon signed-rank",
+   "p_holm": 1.688960692071002e-05
+  }
+ },
+ "per_output": {
+  "jBilling|BRIDGE|1B": {
+   "archive": 17.866666666666667,
+   "final": 17.333333333333332,
+   "union": 18
+  },
+  "jBilling|BRIDGE|5B": {
+   "archive": 17.933333333333334,
+   "final": 17,
+   "union": 18
+  },
+  "jBilling|BRIDGE|10B": {
+   "archive": 17.933333333333334,
+   "final": 17,
+   "union": 18
+  },
+  "jBilling|GM|1B": {
+   "archive": 16.966666666666665,
+   "final": 17,
+   "union": 17
+  },
+  "jBilling|GM|5B": {
+   "archive": 17,
+   "final": 17,
+   "union": 17
+  },
+  "jBilling|GM|10B": {
+   "archive": 17,
+   "final": 17,
+   "union": 17
+  },
+  "OpenMRS|BRIDGE|1B": {
+   "archive": 52.96666666666667,
+   "final": 53,
+   "union": 53
+  },
+  "OpenMRS|BRIDGE|5B": {
+   "archive": 53,
+   "final": 53,
+   "union": 53
+  },
+  "OpenMRS|BRIDGE|10B": {
+   "archive": 53,
+   "final": 53,
+   "union": 53
+  },
+  "OpenMRS|GM|1B": {
+   "archive": 52.6,
+   "final": 52.4,
+   "union": 52.733333333333334
+  },
+  "OpenMRS|GM|5B": {
+   "archive": 53,
+   "final": 51.9,
+   "union": 53
+  },
+  "OpenMRS|GM|10B": {
+   "archive": 53,
+   "final": 51.93333333333333,
+   "union": 53
+  },
+  "Spree|BRIDGE|1B": {
+   "archive": 20.6,
+   "final": 20.533333333333335,
+   "union": 20.8
+  },
+  "Spree|BRIDGE|5B": {
+   "archive": 20.633333333333333,
+   "final": 20.233333333333334,
+   "union": 20.766666666666666
+  },
+  "Spree|BRIDGE|10B": {
+   "archive": 20.566666666666666,
+   "final": 20.366666666666667,
+   "union": 20.7
+  },
+  "Spree|GM|1B": {
+   "archive": 16,
+   "final": 16,
+   "union": 16
+  },
+  "Spree|GM|5B": {
+   "archive": 16,
+   "final": 16,
+   "union": 16
+  },
+  "Spree|GM|10B": {
+   "archive": 16,
+   "final": 16,
+   "union": 16
+  }
+ },
+ "paired": [
+  {
+   "case_study": "OpenMRS",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "52.97",
+   "mean_final": "53",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "0",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "non-normal",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "53",
+   "mean_final": "53",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "53",
+   "mean_final": "53",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "52.6",
+   "mean_final": "52.4",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "49.5",
+   "df": "",
+   "p": "0.12",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.4798",
+   "significant": "False"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "53",
+   "mean_final": "51.9",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "1.532e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "7.658e-07",
+   "significant": "True"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "53",
+   "mean_final": "51.93",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "1.079e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "6.476e-07",
+   "significant": "True"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "20.6",
+   "mean_final": "20.53",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "60",
+   "df": "",
+   "p": "0.6179",
+   "normality_of_differences": "non-normal",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "20.63",
+   "mean_final": "20.23",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "135",
+   "df": "",
+   "p": "0.01749",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.105",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "20.57",
+   "mean_final": "20.37",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "75",
+   "df": "",
+   "p": "0.1169",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.5845",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "16",
+   "mean_final": "16",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "16",
+   "mean_final": "16",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "16",
+   "mean_final": "16",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "17.87",
+   "mean_final": "17.33",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "218.5",
+   "df": "",
+   "p": "0.0006921",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.002769",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "17.93",
+   "mean_final": "17",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "406",
+   "df": "",
+   "p": "1.303e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "7.816e-07",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "verified",
+   "technique": "BRIDGE",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "17.93",
+   "mean_final": "17",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "406",
+   "df": "",
+   "p": "1.303e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "7.816e-07",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "16.97",
+   "mean_final": "17",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "0",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "non-normal",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "17",
+   "mean_final": "17",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "verified",
+   "technique": "GM",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "17",
+   "mean_final": "17",
+   "test": "identical (no test)",
+   "statistic": "",
+   "df": "",
+   "p": "1",
+   "normality_of_differences": "constant",
+   "p_holm": "1",
+   "significant": "False"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "14.5",
+   "mean_final": "7.9",
+   "test": "paired t-test",
+   "statistic": "16.87",
+   "df": "29",
+   "p": "1.569e-16",
+   "normality_of_differences": "normal",
+   "p_holm": "6.277e-16",
+   "significant": "True"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "14.77",
+   "mean_final": "3.833",
+   "test": "paired t-test",
+   "statistic": "32.94",
+   "df": "29",
+   "p": "1.579e-24",
+   "normality_of_differences": "normal",
+   "p_holm": "7.894e-24",
+   "significant": "True"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "14.5",
+   "mean_final": "2.633",
+   "test": "paired t-test",
+   "statistic": "35.82",
+   "df": "29",
+   "p": "1.462e-25",
+   "normality_of_differences": "normal",
+   "p_holm": "8.77e-25",
+   "significant": "True"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "5.733",
+   "mean_final": "3.567",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "460.5",
+   "df": "",
+   "p": "2.288e-06",
+   "normality_of_differences": "non-normal",
+   "p_holm": "6.253e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "5.3",
+   "mean_final": "3.367",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "351",
+   "df": "",
+   "p": "6.815e-06",
+   "normality_of_differences": "non-normal",
+   "p_holm": "6.815e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "OpenMRS",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "5.6",
+   "mean_final": "3.3",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "435",
+   "df": "",
+   "p": "2.084e-06",
+   "normality_of_differences": "non-normal",
+   "p_holm": "6.253e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "5",
+   "mean_final": "1.067",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "463.5",
+   "df": "",
+   "p": "1.589e-06",
+   "normality_of_differences": "non-normal",
+   "p_holm": "8.38e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "5.433",
+   "mean_final": "1.033",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "1.397e-06",
+   "normality_of_differences": "non-normal",
+   "p_holm": "8.38e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "5.133",
+   "mean_final": "1",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "1.493e-06",
+   "normality_of_differences": "non-normal",
+   "p_holm": "8.38e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "1.533",
+   "mean_final": "1.267",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "102",
+   "df": "",
+   "p": "0.04877",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.1463",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "1.567",
+   "mean_final": "1.4",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "80",
+   "df": "",
+   "p": "0.2081",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.2338",
+   "significant": "False"
+  },
+  {
+   "case_study": "Spree",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "1.6",
+   "mean_final": "1.4",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "75",
+   "df": "",
+   "p": "0.1169",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.2338",
+   "significant": "False"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "2.5",
+   "mean_final": "1",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "6.212e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "2.485e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "2.233",
+   "mean_final": "1",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "2.763e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "1.658e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "suite_size",
+   "technique": "BRIDGE",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "2.233",
+   "mean_final": "1",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "465",
+   "df": "",
+   "p": "2.763e-07",
+   "normality_of_differences": "non-normal",
+   "p_holm": "1.658e-06",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "1x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "1.933",
+   "mean_final": "1.6",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "90",
+   "df": "",
+   "p": "0.008365",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.01673",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "5x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "1.933",
+   "mean_final": "1.5",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "112",
+   "df": "",
+   "p": "0.0008864",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.002659",
+   "significant": "True"
+  },
+  {
+   "case_study": "jBilling",
+   "metric": "suite_size",
+   "technique": "GM",
+   "budget": "10x",
+   "comparison": "archive vs final",
+   "n_pairs": "30",
+   "mean_archive": "1.867",
+   "mean_final": "1.567",
+   "test": "Wilcoxon signed-rank",
+   "statistic": "84",
+   "df": "",
+   "p": "0.0317",
+   "normality_of_differences": "non-normal",
+   "p_holm": "0.0317",
+   "significant": "True"
+  }
+ ],
+ "normality_summary": {
+  "BRIDGE": {
+   "non-normal": 10,
+   "constant": 8
+  },
+  "GS": {
+   "non-normal": 9,
+   "constant": 9
+  },
+  "GM": {
+   "non-normal": 10,
+   "constant": 8
+  },
+  "SR": {
+   "non-normal": 12,
+   "constant": 6
+  }
+ }
+}

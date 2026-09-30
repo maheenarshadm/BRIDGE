@@ -1,0 +1,45 @@
+decision,variable,mapping_type,schema_location,note
+Promotion Item Total Eligibility,itemTotal,direct,spree_orders.item_total,
+Effective Minimum Amount Threshold,operatorMin,serialized-field,spree_promotion_rules.preferences[operator_min='>'],"Serialized preference (core/app/models/spree/promotion/rules/item_total.rb: preference :operator_min, :string, default: '>'; core/lib/spree/core/preferences/preferable.rb: serialize :preferences, type: Hash, coder: YAML)."
+Effective Minimum Amount Threshold,amountMin,serialized-field,spree_promotion_rules.preferences[amount_min=100.0],"Serialized preference :amount_min, :decimal, default: 100.00 (item_total.rb)."
+Effective Minimum Amount Threshold,effectiveMinThreshold,not-persisted,n/a,"formula output; resolves operatorMin into one concrete number (amountMin, or amountMin+0.01 if strict)"
+Promotion Item Total Eligibility,amountMaxSet,serialized-field,spree_promotion_rules.preferences[amount_max],"Existence check on the amount_max key of the serialized preferences (item_total.rb declares preference :amount_max, :decimal, default: nil, nullable: true)."
+Effective Maximum Amount Threshold,operatorMax,serialized-field,spree_promotion_rules.preferences[operator_max='<'],"Serialized preference :operator_max, :string, default: '<' (item_total.rb)."
+Effective Maximum Amount Threshold,amountMax,serialized-field,spree_promotion_rules.preferences[amount_max],"Serialized preference :amount_max, :decimal, default: nil, nullable: true (item_total.rb); an unconfigured amount_max resolves to None."
+Effective Maximum Amount Threshold,effectiveMaxThreshold,not-persisted,n/a,"formula output; resolves operatorMax into one concrete number (amountMax, or amountMax-0.01 if strict)"
+Promotion Item Total Eligibility,itemTotalEligible,not-persisted,n/a,"write-back target is a runtime eligibility_errors check, not a column; realized indirectly via whether a spree_discounts row is created. UNIQUE hit policy with a FEEL range literal."
+Promotion Temporal Availability,evaluationTime,not-persisted,n/a,scenario/runtime parameter (Time.current at evaluation), not a stored column
+Promotion Temporal Availability,startsAt,direct,spree_promotions.starts_at,
+Promotion Temporal Availability,expiresAtSet,derived,spree_promotions.expires_at,existence check (IS NOT NULL)
+Promotion Temporal Availability,expiresAt,direct,spree_promotions.expires_at,
+Promotion Temporal Availability,availabilityStatus,not-persisted,n/a,computed at call time, not stored as an enum column
+Promotion Usage Limit Exceeded,usageLimitSet,derived,spree_promotions.usage_limit,existence check (IS NOT NULL)
+Promotion Usage Limit Exceeded,usageLimit,direct,spree_promotions.usage_limit,
+Promotion Usage Limit Exceeded,adjustedCreditsCount,derived-aggregate,COUNT(spree_discounts) WHERE promotion_action_id IN (SELECT id FROM spree_promotion_actions WHERE promotion_id = self) AND 1=1,[ASSUMED: no source documentation for the exact de-duplication mechanism] Counts spree_discounts rows whose promotion_action_id belongs to any action of this promotion (self = this row's own id). The sibling_order_ids same-order-group de-duplication is not modeled. The trailing AND 1=1 keeps the closing parenthesis of the subquery when the filter text is extracted.
+Promotion Usage Limit Exceeded,usageLimitExceeded,not-persisted,n/a,runtime boolean, not stored
+Customer Group Match Count,customerGroupIds,derived-aggregate,spree_customer_group_users.customer_group_id (WHERE user_id = :user_id),join; the column is user_id
+Customer Group Match Count,promotionTargetGroupIds,SCHEMA GAP (partial),spree_promotion_rules.preferences,"The customer_group_ids array lives in the serialized preferences blob, not a dedicated join table (preference key customer_group_ids, an array of spree_customer_groups.id values); spree_customer_groups and spree_customer_group_users are normalized tables."
+Customer Group Match Count,matchingCustomerGroupCount,not-persisted,n/a,formula output
+Promotion Customer Group Eligibility,customerIdPresent,derived,spree_orders.user_id,existence check (IS NOT NULL); the column is user_id, not customer_id (no such rename exists)
+Promotion Customer Group Eligibility,promotionTargetGroupsConfigured,derived,"spree_promotion_rules(promotion_id, type='Spree::Promotion::Rules::CustomerGroup')",[ASSUMED: the promotion is not an explicit DMN input in this decision or its upstream chain; it is identified via spree_order_promotions] Expressed as existence of a spree_promotion_rules row of the CustomerGroup rule type for this promotion (Rails STI type discriminator).
+Promotion Customer Group Eligibility,matchingCustomerGroupCount,derived-aggregate,(upstream decision output),substituted from Customer Group Match Count per DRD edge
+Promotion Customer Group Eligibility,customerGroupEligible,not-persisted,n/a,runtime boolean
+Prior Completed Order Count,customerOrEmail,derived,spree_orders.user_id / spree_orders.email,join key; the column is user_id, not customer_id
+Prior Completed Order Count,priorCompletedOrderCount,not-persisted,n/a,formula output (COUNT over spree_orders)
+First-Order Promotion Eligibility,userOrEmailPresent,derived,spree_orders.user_id / spree_orders.email,existence check (either populated); the column is user_id, not customer_id
+First-Order Promotion Eligibility,priorCompletedOrderCount,derived-aggregate,(upstream decision output),substituted from Prior Completed Order Count per DRD edge
+First-Order Promotion Eligibility,firstOrderEligible,not-persisted,n/a,runtime boolean
+One-Use-Per-User Promotion Eligibility,customerPresent,derived,spree_orders.user_id,existence check (IS NOT NULL); the column is user_id, not customer_id
+One-Use-Per-User Promotion Eligibility,priorPromotionUsageCount,derived-aggregate,COUNT(spree_discounts) WHERE order_id IN (SELECT id FROM spree_orders WHERE user_id = <user_id> AND completed_at IS NOT NULL AND id != self) AND 1=1,"[ASSUMED: this decision has no promotion input, so the count covers discounts from any other completed order by the same customer, not only the promotion under evaluation] Same aggregate recipe shape as adjustedCreditsCount (see schema_location), with the trailing 'AND 1=1' guard. completed_at IS NOT NULL stands in for completed, and id != self excludes the order under test."
+One-Use-Per-User Promotion Eligibility,oneUsePerUserEligible,not-persisted,n/a,runtime boolean
+Promotion Tiered Percent Discount Selection,orderAmount,derived,spree_orders.item_total,the object.amount the calculator is invoked against; exact object varies by promotion action type
+Promotion Tiered Percent Discount Selection,basePercent,SCHEMA GAP (partial),spree_calculators.preferences,"Calculator preferences (base_percent/tiers hash) live in the spree_calculators table's preferences blob; Spree::Calculator::TieredPercent's preference keys are base_percent (decimal) and tiers (hash, order-total-threshold -> percent), discriminated by type='Spree::Calculator::TieredPercent' and calculable_type/calculable_id pointing at the owning promotion action."
+Promotion Tiered Percent Discount Selection,discountPercent,derived,spree_discounts.value / spree_discounts.amount,write-back target once the computed discount is materialized as a spree_discounts row
+Price List Volume Adjustment Tier Selection,purchaseQuantity,direct,spree_line_items.quantity,A line item's quantity column is the quantity being priced.
+Price List Volume Adjustment Tier Selection,adjustmentPercentage,direct,spree_price_adjustment_tiers.percentage,genuine dedicated column -- a rare direct hit in this case study
+Price List Volume Adjustment Tier Selection,priceListBasePercentage,direct,spree_price_lists.price_adjustment_percentage,fallback base rate when no tier band matches
+Price Adjustment Tier Validity Violations,minQuantity,direct,spree_price_adjustment_tiers.min_quantity,genuine dedicated column
+Price Adjustment Tier Validity Violations,percentage,direct,spree_price_adjustment_tiers.percentage,genuine dedicated column
+Price Adjustment Tier Validity Violations,siblingTierCount,derived-aggregate,spree_price_adjustment_tiers (COUNT WHERE price_list_id = :price_list_id AND id != self),count of other tiers on the same price list; cap is a fixed source constant (10), not schema-enforced
+Price Adjustment Tier Validity Violations,invalidReason,not-persisted,n/a,"COLLECT hit policy: each matching row contributes one reason to a list, so several simultaneous violations are reported, matching ActiveRecord validation behavior."
+Price Adjustment Tier Validity,tierValid,not-persisted,n/a,Separate literal-expression decision (count(invalidReasons) = 0) downstream of the COLLECT violations table.

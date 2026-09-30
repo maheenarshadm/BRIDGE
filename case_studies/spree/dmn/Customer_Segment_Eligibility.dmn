@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/"
+             id="Customer_Segment_Eligibility" name="Customer_Segment_Eligibility" namespace="https://spree-dmn.research/case-study">
+    <decision id="Decision_CustomerGroupMatchCount" name="Customer Group Match Count">
+      <variable name="matchingCustomerGroupCount" typeRef="number"/>
+      <literalExpression id="le_Decision_CustomerGroupMatchCount" typeRef="number">
+        <text>count(intersection(customerGroupIds, promotionTargetGroupIds))</text>
+      </literalExpression>
+    </decision>
+    <decision id="Decision_PromotionCustomerGroupEligibility" name="Promotion Customer Group Eligibility">
+      <informationRequirement id="ir_Decision_PromotionCustomerGroupEligibility_Decision_CustomerGroupMatchCount"><requiredDecision href="#Decision_CustomerGroupMatchCount"/></informationRequirement>
+      <decisionTable id="dt_Decision_PromotionCustomerGroupEligibility" hitPolicy="FIRST">
+        <input id="in_Decision_PromotionCustomerGroupEligibility_0" label="order.customer_id present?">
+          <inputExpression id="ie_Decision_PromotionCustomerGroupEligibility_0" typeRef="boolean"><text>customerIdPresent</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionCustomerGroupEligibility_1" label="promotion targets &gt;=1 customer group?">
+          <inputExpression id="ie_Decision_PromotionCustomerGroupEligibility_1" typeRef="boolean"><text>promotionTargetGroupsConfigured</text></inputExpression>
+        </input>
+        <input id="in_Decision_PromotionCustomerGroupEligibility_2" label="Customer Group Match Count (upstream)">
+          <inputExpression id="ie_Decision_PromotionCustomerGroupEligibility_2" typeRef="number"><text>matchingCustomerGroupCount</text></inputExpression>
+        </input>
+        <output id="out_Decision_PromotionCustomerGroupEligibility_0" label="Customer-group rule eligible" name="customerGroupEligible" typeRef="boolean"/>
+        <rule id="Decision_PromotionCustomerGroupEligibility_rule_1">
+          <inputEntry><text>false</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionCustomerGroupEligibility_rule_2">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>false</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionCustomerGroupEligibility_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>&gt; 0</text></inputEntry>
+          <outputEntry><text>true</text></outputEntry>
+        </rule>
+        <rule id="Decision_PromotionCustomerGroupEligibility_rule_4">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_PriorCompletedOrderCount" name="Prior Completed Order Count">
+      <variable name="priorCompletedOrderCount" typeRef="number"/>
+      <literalExpression id="le_Decision_PriorCompletedOrderCount" typeRef="number">
+        <text>count(order for order in store.orders where (order.customer = customer or order.email = email) and order.state = "complete" and order != currentOrder)</text>
+      </literalExpression>
+    </decision>
+    <decision id="Decision_FirstOrderPromotionEligibility" name="First-Order Promotion Eligibility">
+      <informationRequirement id="ir_Decision_FirstOrderPromotionEligibility_Decision_PriorCompletedOrderCount"><requiredDecision href="#Decision_PriorCompletedOrderCount"/></informationRequirement>
+      <decisionTable id="dt_Decision_FirstOrderPromotionEligibility" hitPolicy="FIRST">
+        <input id="in_Decision_FirstOrderPromotionEligibility_0" label="customer or email identified?">
+          <inputExpression id="ie_Decision_FirstOrderPromotionEligibility_0" typeRef="boolean"><text>userOrEmailPresent</text></inputExpression>
+        </input>
+        <input id="in_Decision_FirstOrderPromotionEligibility_1" label="Prior Completed Order Count (upstream)">
+          <inputExpression id="ie_Decision_FirstOrderPromotionEligibility_1" typeRef="number"><text>priorCompletedOrderCount</text></inputExpression>
+        </input>
+        <output id="out_Decision_FirstOrderPromotionEligibility_0" label="First-order rule eligible" name="firstOrderEligible" typeRef="boolean"/>
+        <rule id="Decision_FirstOrderPromotionEligibility_rule_1">
+          <inputEntry><text>false</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+        <rule id="Decision_FirstOrderPromotionEligibility_rule_2">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>0</text></inputEntry>
+          <outputEntry><text>true</text></outputEntry>
+        </rule>
+        <rule id="Decision_FirstOrderPromotionEligibility_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+    <decision id="Decision_OneUsePerUserEligibility" name="One-Use-Per-User Promotion Eligibility">
+      <decisionTable id="dt_Decision_OneUsePerUserEligibility" hitPolicy="FIRST">
+        <input id="in_Decision_OneUsePerUserEligibility_0" label="order.customer present?">
+          <inputExpression id="ie_Decision_OneUsePerUserEligibility_0" typeRef="boolean"><text>customerPresent</text></inputExpression>
+        </input>
+        <input id="in_Decision_OneUsePerUserEligibility_1" label="Prior uses of this promotion by this customer">
+          <inputExpression id="ie_Decision_OneUsePerUserEligibility_1" typeRef="number"><text>priorPromotionUsageCount</text></inputExpression>
+        </input>
+        <output id="out_Decision_OneUsePerUserEligibility_0" label="One-use-per-user rule eligible" name="oneUsePerUserEligible" typeRef="boolean"/>
+        <rule id="Decision_OneUsePerUserEligibility_rule_1">
+          <inputEntry><text>false</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+        <rule id="Decision_OneUsePerUserEligibility_rule_2">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>0</text></inputEntry>
+          <outputEntry><text>true</text></outputEntry>
+        </rule>
+        <rule id="Decision_OneUsePerUserEligibility_rule_3">
+          <inputEntry><text>-</text></inputEntry>
+          <inputEntry><text>-</text></inputEntry>
+          <outputEntry><text>false</text></outputEntry>
+        </rule>
+      </decisionTable>
+    </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_CustomerGroupMatchCount"><dc:Bounds x="100" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PromotionCustomerGroupEligibility"><dc:Bounds x="320" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_PriorCompletedOrderCount"><dc:Bounds x="540" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_FirstOrderPromotionEligibility"><dc:Bounds x="760" y="100" width="180" height="80"/></dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="Decision_OneUsePerUserEligibility"><dc:Bounds x="980" y="100" width="180" height="80"/></dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

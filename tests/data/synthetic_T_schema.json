@@ -1,0 +1,18 @@
+{
+  "student": {
+    "pk": "student_id",
+    "columns": {"student_id": {"type": "INT", "null_false": true}, "gpa": {"type": "REAL", "null_false": false}},
+    "fks": [],
+    "fk_columns": []
+  },
+  "course_load": {
+    "pk": "course_load_id",
+    "columns": {
+      "course_load_id": {"type": "INT", "null_false": true},
+      "student_id": {"type": "INT", "null_false": true},
+      "units": {"type": "INT", "null_false": false}
+    },
+    "fks": ["student"],
+    "fk_columns": [{"column": "student_id", "ref_table": "student", "ref_column": "student_id"}]
+  }
+}

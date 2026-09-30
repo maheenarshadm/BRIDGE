@@ -1,0 +1,80 @@
+{
+  "jBilling": {
+    "budget_1x": 78970,
+    "population_size": 30,
+    "generations": 40,
+    "seeds": [
+      {
+        "seed": 0,
+        "evaluations": 78970,
+        "runtime_seconds": 12.1,
+        "claimed_records": 18
+      },
+      {
+        "seed": 1,
+        "evaluations": 79177,
+        "runtime_seconds": 12.7,
+        "claimed_records": 19
+      },
+      {
+        "seed": 2,
+        "evaluations": 78701,
+        "runtime_seconds": 11.8,
+        "claimed_records": 19
+      }
+    ],
+    "median_runtime_seconds": 12.1
+  },
+  "Spree": {
+    "budget_1x": 86297,
+    "population_size": 30,
+    "generations": 40,
+    "seeds": [
+      {
+        "seed": 0,
+        "evaluations": 86319,
+        "runtime_seconds": 13.2,
+        "claimed_records": 21
+      },
+      {
+        "seed": 1,
+        "evaluations": 85943,
+        "runtime_seconds": 12.7,
+        "claimed_records": 21
+      },
+      {
+        "seed": 2,
+        "evaluations": 86297,
+        "runtime_seconds": 14.4,
+        "claimed_records": 21
+      }
+    ],
+    "median_runtime_seconds": 13.2
+  },
+  "OpenMRS": {
+    "budget_1x": 207920,
+    "population_size": 30,
+    "generations": 40,
+    "seeds": [
+      {
+        "seed": 0,
+        "evaluations": 207920,
+        "runtime_seconds": 38.6,
+        "claimed_records": 53
+      },
+      {
+        "seed": 1,
+        "evaluations": 208003,
+        "runtime_seconds": 41.8,
+        "claimed_records": 53
+      },
+      {
+        "seed": 2,
+        "evaluations": 207677,
+        "runtime_seconds": 46.7,
+        "claimed_records": 53
+      }
+    ],
+    "median_runtime_seconds": 41.8
+  }
+}
