@@ -131,8 +131,8 @@ fitness evaluations.
 | Technique | Setup name in the outputs | Description |
 |---|---|---|
 | BRIDGE | `dynamosa` | the approach |
-| GM | `random_walk` | grounded mutation: random mutation of the grounded inputs, without fitness guidance |
-| GS | `random_sample` | grounded sampling: independent random assignments of the grounded inputs |
+| GM | grounded mutation:` | grounded mutation: random mutation of the grounded inputs, without fitness guidance |
+| GS | ` grounded samplinge` | grounded sampling: independent random assignments of the grounded inputs |
 | SR | `schema_random` | random databases generated from the schema alone, checked by the validator |
 
 Every configuration is repeated 30 times with budgets of 1B, 5B and 10B,
