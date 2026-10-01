@@ -143,7 +143,7 @@ def _dominates(a, b):
     return all(x <= y for x, y in zip(a, b)) and any(x < y for x, y in zip(a, b))
 
 
-def fast_non_dominated_sort(fitness_vectors):
+def prefernce_sort(fitness_vectors):
     n = len(fitness_vectors)
     dominated_by = [set() for _ in range(n)]
     domination_count = [0] * n
@@ -529,7 +529,7 @@ def _dynamosa_generations(records, case_study, population_size, generations, rng
         combined = population + offspring
         fitness_vectors = [[evaluate_objective(r, ind[0], ind[1], ind[2], table_cache)
                              for r in active] for ind in combined]
-        fronts = fast_non_dominated_sort(fitness_vectors)
+        fronts = preference_sort(fitness_vectors)
         new_population = []
         for front in fronts:
             if len(new_population) + len(front) <= population_size:
