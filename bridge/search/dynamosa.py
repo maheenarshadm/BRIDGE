@@ -4,8 +4,7 @@ One population of individuals is evolved against all objectives of a case
 study. Objectives whose upstream prerequisites are not yet satisfied are kept
 out of the search until they become reachable. Offspring are produced by
 table-level crossover and by fitness-guided mutation of the grounded inputs
-of randomly chosen active objectives. Survivors are selected by NSGA-II
-non-dominated sorting and crowding distance over the active objectives, and
+of randomly chosen active objectives. Survivors are selected by preference sorting and crowding distance over the active objectives, and
 an archive keeps the best individual found for every objective. The search
 stops when every objective is satisfied or the budget of fitness evaluations
 is used."""
